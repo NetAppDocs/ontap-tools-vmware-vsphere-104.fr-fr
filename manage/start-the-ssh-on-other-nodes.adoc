@@ -1,0 +1,30 @@
+---
+permalink: manage/start-the-ssh-on-other-nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: Vous devez démarrer SSH sur d’autres nœuds avant de procéder à la mise à niveau. 
+---
+= Démarrer SSH sur d’autres nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez démarrer SSH sur d’autres nœuds avant de procéder à la mise à niveau.
+
+.Avant de commencer
+L’extension du fournisseur VASA doit être activée pour votre instance vCenter Server.
+
+*À propos de cette tâche*
+
+Effectuez cette procédure sur chacun des nœuds avant la mise à niveau.
+
+.Étapes
+. Depuis vCenter Server, ouvrez une console sur VASA Provider.
+. Connectez-vous en tant qu'utilisateur de maintenance.
+. Entrer `4` pour sélectionner Support et Diagnostics.
+. Entrer `1` pour sélectionner Accéder au shell de diagnostic.
+. Entrer `y` pour continuer.
+. Exécutez la commande _sudo systemctl restart ssh_.
+

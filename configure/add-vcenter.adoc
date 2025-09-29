@@ -1,0 +1,36 @@
+---
+permalink: configure/add-vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: Ajoutez des instances vCenter Server aux ONTAP tools for VMware vSphere pour configurer, gérer et protéger vos banques de données virtuelles dans votre environnement vCenter Server. 
+---
+= Ajouter des instances de vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ajoutez des instances vCenter Server aux ONTAP tools for VMware vSphere pour configurer, gérer et protéger vos banques de données virtuelles dans votre environnement vCenter Server.  Lorsque vous ajoutez plusieurs instances de vCenter Server, des certificats d’autorité de certification personnalisés sont requis pour une communication sécurisée entre les outils ONTAP et chaque vCenter Server.
+
+*À propos de cette tâche*
+
+En s'intégrant à vCenter, les outils ONTAP vous permettent d'effectuer des tâches de stockage telles que le provisionnement, les snapshots et la protection des données directement à partir du client vSphere, éliminant ainsi le besoin de passer à des consoles de gestion de stockage distinctes.
+
+.Étapes
+. Ouvrez un navigateur Web et accédez à l'URL : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *vCenters* > *Ajouter* pour intégrer les instances de vCenter Server.  Fournissez votre adresse IP ou nom d’hôte vCenter, votre nom d’utilisateur, votre mot de passe et les détails du port.
++
+
+NOTE: Vous n’avez pas besoin d’un compte administrateur pour ajouter des instances vCenter aux outils ONTAP .  Vous pouvez créer un rôle personnalisé sans le compte administrateur avec des autorisations limitées. Se référer àlink:../concepts/rbac-vcenter-use.html["Utiliser vCenter Server RBAC avec les ONTAP tools for VMware vSphere 10"] pour plus de détails.
+
+
+
+L'ajout d'une instance vCenter Server aux outils ONTAP déclenche automatiquement les actions suivantes :
+
+* Le plug-in client vCenter est enregistré en tant que plug-in distant.
+* Les privilèges personnalisés pour les plug-ins et les API sont appliqués à l’instance vCenter Server.
+* Des rôles personnalisés sont créés pour gérer les utilisateurs.
+* Le plug-in apparaît sous la forme d’un raccourci sur l’interface utilisateur de vSphere.
+

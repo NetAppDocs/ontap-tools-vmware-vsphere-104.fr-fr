@@ -1,0 +1,77 @@
+---
+permalink: manage/enable-backup.html 
+sidebar: sidebar 
+keywords:  
+summary: 'À partir des ONTAP tools for VMware vSphere 10.3, l"appliance utilise un provisionneur de stockage dynamique, vous ne pouvez pas atteindre un RPO nul.  Cependant, vous pouvez atteindre un RPO proche de zéro.' 
+---
+= Créer une sauvegarde et récupérer la configuration des outils ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+À partir des ONTAP tools for VMware vSphere 10.3, l'appliance utilise un provisionneur de stockage dynamique, vous ne pouvez pas atteindre un RPO nul.  Cependant, vous pouvez atteindre un RPO proche de zéro.  Pour atteindre un RPO proche de zéro, vous devez créer une sauvegarde de la configuration et la restaurer sur une nouvelle machine virtuelle.
+
+
+NOTE: Pour migrer vers HA lorsque la sauvegarde non HA est activée, désactivez d’abord la sauvegarde et réactivez-la après la migration.
+
+
+
+== Créer une sauvegarde et télécharger le fichier de sauvegarde
+
+.Étapes
+. Depuis vCenter Server, ouvrez la console de maintenance.
+. Connectez-vous en tant qu'utilisateur de maintenance.
+. Entrer `4` pour sélectionner *Support et Diagnostics*.
+. Entrer `3` pour sélectionner l'option *Activer la sauvegarde du système*.
+. En cas de non-HA, saisissez les informations d’identification vCenter sur lesquelles la machine virtuelle des outils ONTAP est déployée.
+. Entrez la valeur de fréquence de sauvegarde entre 5 et 60 minutes.
+. Appuyez sur *Entrée*
++
+Cela crée la sauvegarde et pousse la sauvegarde vers la banque de données de la machine virtuelle à intervalles réguliers.
+
+. Pour accéder à la sauvegarde, accédez à la section stockage et sélectionnez le magasin de données de la machine virtuelle
+. Sélectionnez la section *Fichiers*.
++
+Dans la section fichier, vous pouvez voir le répertoire.  Le nom du répertoire sera l'adresse IP des outils ONTAP où les points (.) sont remplacés par des traits de soulignement, suffixés par _backup_.
+
+. Pour plus d'informations sur la sauvegarde, téléchargez le fichier backup_info.txt depuis *Fichiers* > *Télécharger*.
+
+
+
+
+== Récupérer
+
+Pour récupérer la configuration, mettez hors tension la machine virtuelle existante et déployez une nouvelle machine virtuelle à l’aide de l’OVA qui a été utilisé dans le déploiement initial.
+
+Vous devez utiliser la même adresse IP des outils ONTAP pour la nouvelle machine virtuelle et la configuration du système, telle que les services activés, la taille du nœud et le mode HA, doit être identique à celle du déploiement initial.
+
+Effectuez les étapes suivantes pour récupérer la configuration à partir du fichier de sauvegarde.
+
+. Depuis vCenter Server, ouvrez la console de maintenance.
+. Connectez-vous en tant qu'utilisateur de maintenance.
+. Entrer `4` pour sélectionner *Support et Diagnostics*.
+. Entrer `2` pour sélectionner l'option *Activer l'accès au diagnostic à distance* et créer un nouveau mot de passe pour l'accès au diagnostic.
+. Sélectionnez une sauvegarde dans le répertoire téléchargé.  Le nom du dernier fichier de sauvegarde est enregistré dans le fichier _backup_info.txt_.
+. Exécutez la commande ci-dessous pour copier la sauvegarde sur la nouvelle machine virtuelle et entrez le mot de passe de diagnostic lorsque vous y êtes invité.
++
+[listing]
+----
+scp <Backup_X.tar.enc> diag@<node_ip>:/home/diag/system_recovery.tar.enc
+----
++
+
+NOTE: Ne modifiez pas le chemin de destination et le nom du fichier (/home/diag/system_recovery.tar.enc) mentionnés dans la commande.
+
+. Une fois le fichier de sauvegarde copié, connectez-vous au shell de diagnostic et exécutez la commande suivante :
++
+[listing]
+----
+sudo perl /home/maint/scripts/post-deploy-upgrade.pl -recovery
+----
++
+Les journaux sont enregistrés dans le fichier _/var/log/post-deploy-upgrade.log_.
+
+. Après une récupération réussie, les services et les objets vCenter sont restaurés.
+

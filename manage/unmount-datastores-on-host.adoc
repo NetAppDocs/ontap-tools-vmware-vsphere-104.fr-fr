@@ -1,0 +1,36 @@
+---
+permalink: manage/unmount-datastores-on-host.html 
+sidebar: sidebar 
+keywords:  
+summary: 'L"action Démonter la banque de données démonte une banque de données NFS ou VMFS des hôtes ESXi.  L"action de démontage de la banque de données est activée pour les banques de données NFS et VMFS qui sont découvertes ou gérées par les ONTAP tools for VMware vSphere.' 
+---
+= Démonter les banques de données NFS et VMFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'action Démonter la banque de données démonte une banque de données NFS ou VMFS des hôtes ESXi.  L'action de démontage de la banque de données est activée pour les banques de données NFS et VMFS qui sont découvertes ou gérées par les ONTAP tools for VMware vSphere.
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur un objet de banque de données NFS ou VMFS et sélectionnez *Démonter la banque de données*.
++
+Une boîte de dialogue s’ouvre et répertorie les hôtes ESXi sur lesquels la banque de données est montée.  Lorsque l'opération est effectuée sur une banque de données protégée, un message d'avertissement s'affiche à l'écran.
+
+. Sélectionnez un ou plusieurs hôtes ESXi pour démonter la banque de données.
++
+Vous ne pouvez pas démonter la banque de données de tous les hôtes.  L'interface utilisateur vous suggère d'utiliser plutôt l'opération de suppression de la banque de données.
+
+. Sélectionnez le bouton *Démonter*.
++
+Si le magasin de données fait partie d’un cluster d’hôtes protégé, un message d’avertissement s’affiche.
+
+
+
+
+NOTE: Si la banque de données protégée est démontée, le paramètre de protection existant peut entraîner une protection partielle. Consultez link:../manage/edit-hostcluster-protection.html["Modifier le cluster d'hôtes protégé"] pour permettre une protection complète.
+
+.Quelle est la prochaine étape ?
+Vous pouvez suivre la progression dans le panneau des tâches récentes.

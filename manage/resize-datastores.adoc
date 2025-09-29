@@ -1,0 +1,25 @@
+---
+permalink: manage/resize-datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: Le redimensionnement d’un magasin de données vous permet d’augmenter le stockage de vos fichiers de machine virtuelle.  Vous pouvez modifier la taille d’un magasin de données à mesure que vos besoins en infrastructure évoluent. 
+---
+= Redimensionner le magasin de données NFS et VMFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le redimensionnement d’un magasin de données vous permet d’augmenter le stockage de vos fichiers de machine virtuelle.  Vous pouvez modifier la taille d’un magasin de données à mesure que vos besoins en infrastructure évoluent.
+
+*À propos de cette tâche*
+
+Vous ne pouvez augmenter que la taille d’un magasin de données NFS et VMFS.  Un FlexVol volume qui fait partie d'une banque de données NFS et VMFS ne peut pas diminuer en dessous de la taille existante, mais peut augmenter de 120 % au maximum.
+
+.Étapes
+. Depuis la page d’accueil de vSphere Client, sélectionnez *Hôtes et clusters*.
+. Dans le volet de navigation, sélectionnez le centre de données qui contient le magasin de données.
+. Cliquez avec le bouton droit sur la banque de données NFS ou VMFS et sélectionnez * Outils NetApp ONTAP * > * Redimensionner la banque de données *.
+. Dans la boîte de dialogue Redimensionner, spécifiez une nouvelle taille pour la banque de données et sélectionnez *OK*.
+

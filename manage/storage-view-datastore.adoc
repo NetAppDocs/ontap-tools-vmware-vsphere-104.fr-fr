@@ -1,0 +1,35 @@
+---
+permalink: manage/storage-view-datastore.html 
+sidebar: sidebar 
+keywords: Remove vVol datastore 
+summary: 'La vue de stockage ONTAP sous l"onglet Configurer des ONTAP tools for VMware vSphere fournit des données relatives à la banque de données et à son volume.' 
+---
+= Vues de stockage ONTAP pour les banques de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les ONTAP tools for VMware vSphere affichent la vue latérale du stockage ONTAP des banques de données et de leurs volumes dans l'onglet de configuration.
+
+.Étapes
+. Depuis le client vSphere, accédez au magasin de données.
+. Sélectionnez l’onglet *Configurer* dans le volet de droite.
+. Sélectionnez * Outils NetApp ONTAP * > * Stockage ONTAP *.  Selon le type de banque de données, la vue change.  Reportez-vous au tableau ci-dessous pour plus d'informations :
+
+
+|===
+
+
+| *Type de magasin de données* | *Informations disponibles* 
+
+
+| Banque de données NFS | La page *Détails de stockage* contient des informations sur les backends de stockage, les agrégats et le volume.  La page *Détails NFS* contient des données relatives à la banque de données NFS. 
+
+
+| Banques de données VMFS | La page *Détails de stockage* contient les détails du backend de stockage, de l'agrégat, du volume et de la zone de disponibilité de stockage (SAZ).  La page *Détails de l'unité de stockage* contient les détails de l'unité de stockage. 
+
+
+| Magasins de données vVols | Répertorie tous les volumes.  Vous pouvez étendre ou supprimer du stockage à partir du volet de stockage ONTAP .  Cette vue n'est pas prise en charge pour la banque de données vVols basée sur le système ASA r2. 
+|===

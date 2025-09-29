@@ -1,0 +1,104 @@
+---
+permalink: configure/configure-esx-server-multipath-and-timeout-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: Les ONTAP tools for VMware vSphere vérifient et définissent les paramètres de multivoie de l’hôte ESXi et les paramètres de délai d’expiration HBA qui fonctionnent le mieux avec les systèmes de stockage NetApp . 
+---
+= Configurer les paramètres de l'hôte ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuration des paramètres de délai d'expiration et de multi-chemin du serveur ESXi garantit une haute disponibilité et l'intégrité des données en permettant de basculer de manière transparente vers un chemin de stockage de sauvegarde en cas de défaillance d'un chemin principal.
+
+
+
+== Configurer les paramètres de multi-chemin et de délai d'expiration du serveur ESXi
+
+Les ONTAP tools for VMware vSphere vérifient et définissent les paramètres multichemin de l’hôte ESXi et les paramètres de délai d’expiration HBA qui fonctionnent le mieux avec les systèmes de stockage NetApp .
+
+*À propos de cette tâche*
+
+Selon votre configuration et la charge du système, ce processus peut prendre beaucoup de temps.  La progression de la tâche est affichée dans le panneau Tâches récentes.
+
+.Étapes
+. Depuis la page d’accueil du client Web VMware vSphere, sélectionnez *Hôtes et clusters*.
+. Cliquez avec le bouton droit sur un hôte et sélectionnez * Outils NetApp ONTAP * > * Mettre à jour les données de l'hôte *.
+. Sur la page des raccourcis du client Web VMware vSphere, sélectionnez * Outils NetApp ONTAP * sous la section Plug-ins.
+. Accédez à la carte *Conformité de l'hôte ESXi* dans la présentation (tableau de bord) du plug-in ONTAP tools for VMware vSphere .
+. Sélectionnez le lien *Appliquer les paramètres recommandés*.
+. Dans la fenêtre *Appliquer les paramètres d'hôte recommandés*, sélectionnez les hôtes que vous souhaitez mettre à jour pour qu'ils soient conformes aux paramètres recommandés par NetApp et sélectionnez *Suivant*.
++
+
+NOTE: Vous pouvez développer l’hôte ESXi pour voir les valeurs actuelles.
+
+. Dans la page des paramètres, sélectionnez les valeurs recommandées selon vos besoins.
+. Dans le volet récapitulatif, vérifiez les valeurs et sélectionnez *Terminer*.  Vous pouvez suivre la progression dans le panneau des tâches récentes.
+
+
+
+
+== Définir les valeurs de l'hôte ESXi
+
+À l’aide des ONTAP tools for VMware vSphere, vous pouvez définir des délais d’expiration et d’autres valeurs sur les hôtes ESXi pour garantir les meilleures performances et un basculement réussi.  Les valeurs définies par les ONTAP tools for VMware vSphere sont basées sur des tests NetApp internes.
+
+Vous pouvez définir les valeurs suivantes sur un hôte ESXi :
+
+
+
+=== Paramètres de l'adaptateur HBA/CNA
+
+Définit les paramètres suivants sur les valeurs par défaut :
+
+* Disque.QFullSampleSize
+* Disque.QFullThreshold
+* Délais d'attente du HBA Emulex FC
+* Délais d'expiration du HBA QLogic FC
+
+
+
+
+=== Paramètres MPIO
+
+Les paramètres MPIO définissent les chemins préférés pour les systèmes de stockage NetApp .  Ils déterminent lesquels des chemins disponibles sont optimisés (par opposition aux chemins non optimisés qui traversent le câble d'interconnexion) et définissent le chemin préféré sur l'un de ces chemins.
+
+Dans les environnements hautes performances ou lorsque vous testez les performances avec une seule banque de données LUN, envisagez de modifier le paramètre d'équilibrage de charge de la stratégie de sélection de chemin (PSP) à tour de rôle (VMW_PSP_RR) du paramètre IOPS par défaut de 1 000 à une valeur de 1.
+
+
+NOTE: Les paramètres MPIO ne s'appliquent pas aux protocoles NVMe, NVMe/FC et NVMe/TCP.
+
+
+
+=== Paramètres NFS
+
+|===
+
+
+| Paramètre | Définissez cette valeur sur... 
+
+
+| Taille du tas Net.Tcpip | 32 
+
+
+| Net.TcpipHeapMax | 1024 Mo 
+
+
+| NFS.MaxVolumes | 256 
+
+
+| NFS41.MaxVolumes | 256 
+
+
+| NFS.MaxQueueDepth | 128 ou plus 
+
+
+| NFS.HeartbeatMaxFailures | 10 
+
+
+| Fréquence de battement de cœur NFS | 12 
+
+
+| Délai d'expiration du battement de cœur NFS | 5 
+|===

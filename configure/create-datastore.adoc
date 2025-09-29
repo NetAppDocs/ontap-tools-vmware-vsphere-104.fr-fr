@@ -1,0 +1,183 @@
+---
+permalink: configure/create-datastore.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Lorsque vous créez une banque de données au niveau du cluster hôte, la banque de données est créée et montée sur tous les hôtes de la destination, et l"action est activée uniquement si l"utilisateur actuel dispose du privilège d"exécution.' 
+---
+= Créer un magasin de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous créez une banque de données au niveau du cluster hôte, la banque de données est créée et montée sur tous les hôtes de la destination, et l'action est activée uniquement si l'utilisateur actuel dispose du privilège d'exécution.
+
+*Interopérabilité entre les magasins de données natifs avec les magasins de données gérés par vCenter Server et les outils ONTAP *
+
+Les ONTAP tools for VMware vSphere 10 créent des igroups imbriqués pour les banques de données, avec des igroups parents spécifiques aux banques de données et des igroups enfants mappés aux hôtes.  Vous pouvez créer des groupes i plats à partir du gestionnaire système ONTAP et les utiliser pour créer des banques de données VMFS sans utiliser les outils ONTAP . Se référer à https://docs.netapp.com/us-en/ontap/san-admin/manage-san-initiators-task.html["Gérer les initiateurs et les groupes SAN"] pour plus d'informations.
+
+Lorsque le stockage est intégré aux outils ONTAP et que la découverte de banque de données est exécutée, les groupes i plats et les banques de données VMFS deviennent gérés par les outils ONTAP et sont convertis en groupes i imbriqués.  Vous ne pouvez pas utiliser les groupes i plats précédents pour créer de nouveaux magasins de données ; vous devez utiliser l'interface utilisateur des outils ONTAP ou l'API REST pour réutiliser les groupes i imbriqués.
+
+[role="tabbed-block"]
+====
+.Créer une banque de données vVols
+--
+À partir des ONTAP tools for VMware vSphere 10.3, vous pouvez créer une banque de données vVols sur des systèmes ASA r2 avec une efficacité spatiale telle que thin.vVol. Le fournisseur VASA crée un conteneur et les points de terminaison de protocole souhaités lors de la création de la banque de données vVol. Ce conteneur n'aura aucun volume de support.
+
+.Avant de commencer
+* Assurez-vous que les agrégats racines ne sont pas mappés à SVM.
+* Assurez-vous que le fournisseur VASA est enregistré auprès du vCenter sélectionné.
+* Dans le système de stockage ASA r2, SVM doit être mappé pour agréger l'utilisateur SVM.
+
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur un système hôte, un cluster hôte ou un centre de données et sélectionnez * Outils NetApp ONTAP * > * Créer une banque de données *.
+. Sélectionnez vVols *Type de magasin de données*.
+. Saisissez le *Nom du magasin de données* et les informations du *Protocole*.
++
+
+NOTE: Le système ASA r2 prend en charge les protocoles iSCSI et FC pour vVols.
+
+. Sélectionnez la machine virtuelle de stockage dans laquelle vous souhaitez créer la banque de données.
+. Sous options avancées :
++
+** Si vous sélectionnez la *politique d’exportation personnalisée*, assurez-vous d’exécuter la découverte dans vCenter pour tous les objets. Il est recommandé de ne pas utiliser cette option.
+** Vous pouvez sélectionner le nom du *groupe d'initiateurs personnalisé* pour les protocoles iSCSI et FC.
++
+
+NOTE: Dans le type de système de stockage ASA r2 SVM, les unités de stockage (LUN/espace de noms) ne sont pas créées car la banque de données n'est qu'un conteneur logique.
+
+
+
+. Dans le volet *Attributs de stockage*, vous pouvez créer de nouveaux volumes ou utiliser les volumes existants.  Cependant, vous ne pouvez pas combiner ces deux types de volumes pour créer une banque de données vVols .
++
+Lors de la création d'un nouveau volume, vous pouvez activer la QoS sur la banque de données. Par défaut, un volume est créé pour chaque demande de création de LUN. Cette étape n’est pas applicable aux banques de données vVols utilisant les systèmes de stockage ASA r2.
+
+. Vérifiez votre sélection dans le volet *Résumé* et sélectionnez *Terminer*.
+
+
+--
+.Créer une banque de données NFS
+--
+Une banque de données VMware Network File System (NFS) utilise le protocole NFS pour connecter les hôtes ESXi à un périphérique de stockage partagé via un réseau.  Les banques de données NFS sont couramment utilisées dans les environnements VMware vSphere et offrent plusieurs avantages, tels que la simplicité et la flexibilité.
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur un système hôte, un cluster hôte ou un centre de données et sélectionnez * Outils NetApp ONTAP * > * Créer une banque de données *.
+. Sélectionnez NFS dans le champ *Type de magasin de données*.
+. Saisissez le nom, la taille et les informations de protocole du magasin de données dans le volet *Nom et protocole*.  Sélectionnez *Cluster de banque de données* et *Authentification Kerberos* dans les options avancées.
++
+
+NOTE: L'authentification Kerberos n'est disponible que lorsque le protocole NFS 4.1 est sélectionné.
+
+. Sélectionnez *Plateforme* et *VM de stockage* dans le volet *Stockage*.
+. Si vous sélectionnez *Politique d’exportation personnalisée* sous les options avancées, exécutez la découverte dans vCenter pour tous les objets. Il est recommandé de ne pas utiliser cette option.
++
+
+NOTE: Vous ne pouvez pas créer une banque de données NFS à l'aide de la stratégie de volume par défaut/racine de la SVM.
+
++
+** Dans les options avancées, le bouton bascule *Asymétrique* n'est visible que si les performances ou la capacité sont sélectionnées dans la liste déroulante de la plateforme.
+** Lorsque vous choisissez l'option *Tout* dans la liste déroulante de la plate-forme, vous pouvez voir les SVM qui font partie du vCenter, quelle que soit la plate-forme ou l'indicateur asymétrique.
+
+
+. Sélectionnez l'agrégat pour la création de volume dans le volet *Attributs de stockage*.  Dans les options avancées, choisissez *Réserve d'espace* et *Activer QoS* selon vos besoins.
+. Vérifiez les sélections dans le volet *Résumé* et sélectionnez *Terminer*.
+
+
+Le magasin de données NFS est créé et monté sur tous les hôtes.
+
+--
+.Créer une banque de données VMFS
+--
+Virtual Machine File System (VMFS) est un système de fichiers en cluster qui stocke les fichiers de machine virtuelle dans les environnements VMware vSphere.  VMFS permet à plusieurs hôtes ESXi d’accéder simultanément aux mêmes fichiers de machine virtuelle, activant ainsi des fonctionnalités telles que vMotion et la haute disponibilité.
+
+Sur un cluster protégé :
+
+* Vous ne pouvez créer que des banques de données VMFS.  Lorsque vous ajoutez une banque de données VMFS à un cluster protégé, la banque de données devient automatiquement protégée.
+* Vous ne pouvez pas créer une banque de données sur un centre de données avec un ou plusieurs clusters d’hôtes protégés.
+* Vous ne pouvez pas créer de banque de données sur l'hôte ESXi si le cluster d'hôte parent est protégé par une relation de type « Politique de duplex de basculement automatisé » (configuration uniforme/non uniforme).
+* Vous pouvez créer une banque de données VMFS uniquement sur un hôte ESXi protégé par une relation asynchrone.  Vous ne pouvez pas créer et monter une banque de données sur un hôte ESXi qui fait partie d'un cluster d'hôtes protégé par la stratégie « Duplex de basculement automatisé ».
+
+
+.Avant de commencer
+* Activez les services et les LIF pour chaque protocole côté stockage ONTAP .
+* Mapper SVM pour agréger l'utilisateur SVM dans le système de stockage ASA r2.
+* Configurez l'hôte ESXi si vous utilisez le protocole NVMe/TCP :
++
+.. Passez en revue le https://www.vmware.com/resources/compatibility/detail.php?deviceCategory=san&productid=49677&releases_filter=589,578,518,508,448&deviceCategory=san&details=1&partner=399&Protocols=1&transportTypes=3&isSVA=0&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc["Guide de compatibilité VMware"]
++
+
+NOTE: VMware vSphere 7.0 U3 et les versions ultérieures prennent en charge le protocole NVMe/TCP.  Cependant, VMware vSphere 8.0 et les versions ultérieures sont recommandées.
+
+.. Vérifiez si le fournisseur de la carte d’interface réseau (NIC) prend en charge la carte réseau ESXi avec le protocole NVMe/TCP.
+.. Configurez la carte réseau ESXi pour NVMe/TCP conformément aux spécifications du fournisseur de la carte réseau.
+.. Lorsque vous utilisez la version VMware vSphere 7, suivez les instructions sur le site VMware https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/configure-adapters-for-nvme-over-tcp-storage/configure-vmkernel-binding-for-the-tcp-adapter.html["Configurer la liaison VMkernel pour l'adaptateur NVMe sur TCP"] pour configurer la liaison de port NVMe/TCP.  Lorsque vous utilisez la version VMware vSphere 8, suivez https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-tcp-on-esxi.html["Configuration de NVMe sur TCP sur ESXi"] , pour configurer la liaison du port NVMe/TCP.
+.. Pour la version VMware vSphere 7, suivez les instructions de la page https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["Activer les adaptateurs logiciels NVMe sur RDMA ou NVMe sur TCP"] pour configurer les adaptateurs logiciels NVMe/TCP.  Pour la version VMware vSphere 8, suivez https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-rdma-roce-v2-on-esxi/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["Ajoutez des adaptateurs NVMe sur RDMA ou NVMe sur TCP"] pour configurer les adaptateurs logiciels NVMe/TCP.
+.. Courirlink:../configure/discover-storage-systems-and-hosts.html["Découvrez les systèmes de stockage et les hôtes"] action sur l'hôte ESXi. Pour plus d'informations, consultez  https://community.netapp.com/t5/Tech-ONTAP-Blogs/How-to-Configure-NVMe-TCP-with-vSphere-8-0-Update-1-and-ONTAP-9-13-1-for-VMFS/ba-p/445429["Comment configurer NVMe/TCP avec vSphere 8.0 Update 1 et ONTAP 9.13.1 pour les banques de données VMFS"] .
+
+
+* Si vous utilisez le protocole NVME/FC, procédez comme suit pour configurer l’hôte ESXi :
++
+.. Si ce n’est pas déjà fait, activez NVMe over Fabrics (NVMe-oF) sur vos hôtes ESXi.
+.. Zonage SCSI complet.
+.. Assurez-vous que les hôtes ESXi et le système ONTAP sont connectés au niveau d’une couche physique et logique.
+
+
+
+
+Pour configurer un SVM ONTAP pour le protocole FC, reportez-vous à https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-fc-task.html["Configurer un SVM pour FC"] .
+
+Pour plus d'informations sur l'utilisation du protocole NVMe/FC avec VMware vSphere 8.0, reportez-vous à https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["Configuration de l'hôte NVMe-oF pour ESXi 8.x avec ONTAP"] .
+
+Pour plus d'informations sur l'utilisation de NVMe/FC avec VMware vSphere 7.0, reportez-vous à https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["Guide de configuration de l'hôte ONTAP NVMe/FC"] et http://www.netapp.com/us/media/tr-4684.pdf["TR-4684"] .
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur un système hôte, un cluster hôte ou un centre de données et sélectionnez * Outils NetApp ONTAP * > * Créer une banque de données *.
+. Sélectionnez le type de banque de données VMFS.
+. Saisissez le nom, la taille et les informations de protocole du magasin de données dans le volet *Nom et protocole*. Si vous choisissez d’ajouter la nouvelle banque de données à un cluster de banques de données VMFS existant, sélectionnez le sélecteur de cluster de banques de données sous Options avancées.
+. Sélectionnez la machine virtuelle de stockage dans le volet *Stockage*.  Indiquez le *Nom du groupe d'initiateurs personnalisé* dans la section *Options avancées* selon les besoins.  Vous pouvez choisir un igroup existant pour le magasin de données ou créer un nouveau igroup avec un nom personnalisé.
++
+Lorsque le protocole NVMe/FC ou NVMe/TCP est sélectionné, un nouveau sous-système d'espace de noms est créé et utilisé pour le mappage d'espace de noms. Le sous-système d’espace de noms est créé à l’aide du nom généré automatiquement qui inclut le nom du magasin de données. Vous pouvez renommer le sous-système d'espace de noms dans le champ *nom du sous-système d'espace de noms personnalisé* dans les options avancées du volet *Stockage*.
+
+. Depuis le volet *attributs de stockage* :
++
+.. Sélectionnez *Agrégat* dans les options déroulantes.
++
+
+NOTE: Pour les systèmes de stockage ASA r2, l'option *Agrégation* n'est pas affichée, car le stockage ASA r2 est désagrégé. Lorsque vous choisissez un système de stockage ASA r2 de type SVM, la page des attributs de stockage affiche les options d'activation de la qualité de service.
+
+.. Conformément au protocole sélectionné, une unité de stockage (LUN/Namespace) est créée avec une réserve d'espace de type thin.
++
+
+NOTE: À partir d' ONTAP 9.16.1, les systèmes de stockage ASA r2 prennent en charge jusqu'à 12 nœuds par cluster.
+
+.. Sélectionnez le *Niveau de service de performances* pour les systèmes de stockage ASA r2 avec 12 nœuds SVM qui est un cluster hétérogène.  Cette option n'est pas disponible si le SVM sélectionné est un cluster homogène ou utilise un utilisateur SVM.
++
+« Tout » est la valeur par défaut du niveau de service de performance (PSL).  Ce paramètre crée l'unité de stockage à l'aide de l'algorithme de placement équilibré ONTAP .  Cependant, vous pouvez sélectionner l'option performance ou extrême selon vos besoins.
+
+.. Sélectionnez les options *Utiliser le volume existant*, *Activer la QoS* selon vos besoins et fournissez les détails.
++
+
+NOTE: Dans le type de stockage ASA r2, la création ou la sélection de volume ne s'applique pas à la création d'unité de stockage (LUN/espace de noms).  Par conséquent, ces options ne sont pas affichées.
+
++
+
+NOTE: Vous ne pouvez pas utiliser le volume existant pour créer une banque de données VMFS avec le protocole NVMe/FC ou NVMe/TCP ; vous devez créer un nouveau volume.
+
+
+
+. Vérifiez les détails du magasin de données dans le volet *Résumé* et sélectionnez *Terminer*.
+
+
+
+NOTE: Si vous créez la banque de données sur un cluster protégé, vous pouvez voir un message en lecture seule : « La banque de données est en cours de montage sur un cluster protégé. »
+
+.Résultat
+Le magasin de données VMFS est créé et monté sur tous les hôtes.
+
+--
+====

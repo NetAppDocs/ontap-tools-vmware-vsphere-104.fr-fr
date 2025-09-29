@@ -1,0 +1,76 @@
+---
+permalink: manage/maintenance-console.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez gérer vos configurations d"application, de système et de réseau à l"aide de la console de maintenance des outils ONTAP .  Vous pouvez modifier votre mot de passe administrateur et votre mot de passe de maintenance.  Vous pouvez également générer des bundles de support, définir différents niveaux de journalisation, afficher et gérer les configurations TLS et démarrer des diagnostics à distance.' 
+---
+= Présentation des ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez gérer vos configurations d'application, de système et de réseau à l'aide de la console de maintenance des outils ONTAP .  Vous pouvez modifier votre mot de passe administrateur et votre mot de passe de maintenance.  Vous pouvez également générer des bundles de support, définir différents niveaux de journalisation, afficher et gérer les configurations TLS et démarrer des diagnostics à distance.
+
+Vous devez avoir installé les outils VMware après avoir déployé les ONTAP tools for VMware vSphere pour accéder à la console de maintenance.  Vous devriez utiliser `maint` comme le nom d'utilisateur et le mot de passe que vous avez configurés lors du déploiement pour vous connecter à la console de maintenance des outils ONTAP .  Vous devez utiliser *nano* pour éditer les fichiers dans la console de maintenance ou de connexion root.
+
+
+NOTE: Vous devez définir un mot de passe pour le `diag` utilisateur lors de l'activation des diagnostics à distance.
+
+Vous devez utiliser l’onglet *Résumé* de vos ONTAP tools for VMware vSphere pour accéder à la console de maintenance.  Lorsque vous sélectionnezimage:../media/launch-maintenance-console.gif["Bouton de lecture"] , la console de maintenance démarre.
+
+|===
+
+
+| *Menu de la console* | *Options* 
+
+
+ a| 
+Configuration de l'application
+ a| 
+. Afficher le résumé de l'état du serveur
+. Modifier le niveau LOG pour les services VASA Provider et SRA
+
+
+
+
+ a| 
+Configuration du système
+ a| 
+. Redémarrer la machine virtuelle
+. Arrêter la machine virtuelle
+. Modifier le mot de passe de l'utilisateur « maint »
+. Changer de fuseau horaire
+. Augmenter la taille du disque de prison (/jail)
+. Mise à niveau
+. Installer VMware Tools
+
+
+
+
+ a| 
+Configuration du réseau
+ a| 
+. Afficher les paramètres d'adresse IP
+. Afficher les paramètres de recherche de nom de domaine
+. Modifier les paramètres de recherche de nom de domaine
+. Afficher les itinéraires statiques
+. Modifier les itinéraires statiques
+. Valider les modifications
+. Envoyer un ping à un hôte
+. Restaurer les paramètres par défaut
+
+
+
+
+ a| 
+Assistance et diagnostic
+ a| 
+. Accéder au shell de diagnostic
+. Activer l'accès au diagnostic à distance
+. Fournir les informations d'identification vCenter pour la sauvegarde
+. Prendre une sauvegarde
+
+
+|===

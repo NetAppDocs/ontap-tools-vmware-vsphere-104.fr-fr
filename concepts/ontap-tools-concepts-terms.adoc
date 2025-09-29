@@ -1,0 +1,170 @@
+---
+permalink: concepts/ontap-tools-concepts-terms.html 
+sidebar: sidebar 
+keywords:  
+summary: La section suivante décrit les concepts et termes clés utilisés dans le document. 
+---
+= Concepts et termes clés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La section suivante décrit les concepts et termes clés utilisés dans le document.
+
+
+
+=== Systèmes ASA r2
+
+Les nouveaux systèmes NetApp ASA r2 offrent une solution matérielle et logicielle unifiée qui crée une expérience simplifiée spécifique aux besoins des clients SAN uniquement. https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["En savoir plus sur les systèmes de stockage ASA r2"] .
+
+
+
+=== Autorité de certification (CA)
+
+CA est une entité de confiance qui émet des certificats Secure Sockets Layer (SSL).
+
+
+
+=== Groupe de cohérence (CG)
+
+Un groupe de cohérence est un ensemble de volumes gérés comme une seule unité. Les CG sont synchronisés pour assurer la cohérence des données entre les unités de stockage et les volumes. Dans ONTAP, ils offrent une gestion facile et une garantie de protection pour une charge de travail applicative couvrant plusieurs volumes. En savoir plus sur https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["groupes de cohérence"] .
+
+
+
+=== Double pile
+
+Un réseau à double pile est un environnement réseau qui prend en charge l'utilisation simultanée d'adresses IPv4 et IPv6.
+
+
+
+=== Haute disponibilité (HA)
+
+Les nœuds de cluster sont configurés en paires HA pour des opérations non perturbatrices.
+
+
+
+=== Numéro d'unité logique (LUN)
+
+Un LUN est un numéro utilisé pour identifier une unité logique au sein d'un réseau de stockage (SAN).  Ces périphériques adressables sont généralement des disques logiques accessibles via le protocole Small Computer System Interface (SCSI) ou l'un de ses dérivés encapsulés.
+
+
+
+=== Espace de noms et sous-système NVMe
+
+Un espace de noms NVMe est une quantité de mémoire non volatile qui peut être formatée en blocs logiques.  Les espaces de noms sont l’équivalent des LUN pour les protocoles FC et iSCSI, et un sous-système NVMe est analogue à un igroup.  Un sous-système NVMe peut être associé à des initiateurs afin que les initiateurs associés puissent accéder aux espaces de noms au sein du sous-système.
+
+
+
+=== Gestionnaire d'outils ONTAP
+
+ONTAP Tools Manager offre davantage de contrôle aux ONTAP tools for VMware vSphere sur les instances vCenter Server gérées et les backends de stockage intégrés.  Il permet de gérer les instances vCenter Server, les backends de stockage, les certificats, les mots de passe et les téléchargements de bundles de journaux.
+
+
+
+=== Appareil virtuel ouvert (OVA)
+
+OVA est une norme ouverte pour le packaging et la distribution d'appliances virtuelles ou de logiciels qui doivent être exécutés sur des machines virtuelles.
+
+
+
+=== Objectif de point de récupération (RPO)
+
+Le RPO mesure la fréquence à laquelle vous sauvegardez ou répliquez les données.  Il spécifie le moment exact auquel vous devez restaurer les données après une panne pour reprendre les opérations commerciales.  Par exemple, si une organisation a un RPO de 4 heures, elle peut tolérer de perdre jusqu’à 4 heures de données en cas de sinistre.
+
+
+
+=== Synchronisation active de SnapMirror
+
+La synchronisation active SnapMirror permet aux services professionnels de continuer à fonctionner même en cas de panne totale du site, en prenant en charge le basculement transparent des applications à l'aide d'une copie secondaire.  Aucune intervention manuelle ou script personnalisé n’est requis pour déclencher un basculement avec la synchronisation active SnapMirror . En savoir plus sur https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["Synchronisation active de SnapMirror"] .
+
+
+
+=== Backends de stockage
+
+Les backends de stockage sont l’infrastructure de stockage sous-jacente que l’hôte ESXi utilise pour stocker les fichiers, les données et d’autres ressources de la machine virtuelle.  Ils permettent à l'hôte ESXi d'accéder aux données persistantes et de les gérer, offrant ainsi la capacité de stockage et les performances requises pour un environnement virtualisé.
+
+.Cluster global (backend de stockage)
+Les backends de stockage globaux, disponibles uniquement avec les informations d'identification du cluster ONTAP , sont intégrés via l'interface du gestionnaire d'outils ONTAP .  Ils peuvent être ajoutés avec des privilèges minimaux pour permettre la découverte des ressources de cluster essentielles nécessaires à la gestion des vVols .  Les clusters globaux sont idéaux pour les scénarios multi-locataires où un utilisateur SVM est ajouté localement pour la gestion des vVols .
+
+.Backend de stockage local
+Les backends de stockage locaux avec des informations d'identification de cluster ou SVM sont ajoutés via l'interface utilisateur des outils ONTAP et sont limités à un vCenter.  Lors de l'utilisation des informations d'identification du cluster localement, les SVM associés sont automatiquement mappés avec vCenter pour gérer les vVols ou VMFS.  Pour la gestion VMFS, y compris SRA, les outils ONTAP prennent en charge les informations d’identification SVM sans avoir besoin d’un cluster global.
+
+
+
+=== Adaptateur de réplication de stockage (SRA)
+
+SRA est le logiciel spécifique au fournisseur de stockage installé à l'intérieur du dispositif VMware Live Site Recovery.  L'adaptateur permet la communication entre Site Recovery Manager et un contrôleur de stockage au niveau de la machine virtuelle de stockage (SVM) et la configuration au niveau du cluster.
+
+
+
+=== Machine virtuelle de stockage (SVM)
+
+SVM est l'unité de multilocation dans ONTAP.  Comme une machine virtuelle exécutée sur un hyperviseur, SVM est une entité logique qui fait abstraction des ressources physiques.  SVM contient des volumes de données et un ou plusieurs LIF via lesquels ils fournissent des données aux clients.
+
+
+
+=== Configuration uniforme et non uniforme
+
+* *L'accès uniforme à l'hôte* signifie que les hôtes de deux sites sont connectés à tous les chemins vers les clusters de stockage sur les deux sites.  Les chemins intersites s'étendent sur des distances.
+* *L'accès hôte non uniforme* signifie que les hôtes de chaque site sont connectés uniquement au cluster du même site.  Les chemins intersites et les chemins étirés ne sont pas connectés.
++
+
+NOTE: L'accès uniforme à l'hôte est pris en charge pour tout déploiement de synchronisation active SnapMirror ; l'accès non uniforme à l'hôte est uniquement pris en charge pour les déploiements symétriques actifs/actifs. En savoir plus sur https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["Présentation de la synchronisation active SnapMirror dans ONTAP"] .
+
+
+
+
+
+=== Système de fichiers de machine virtuelle (VMFS)
+
+VMFS est un système de fichiers en cluster conçu pour stocker des fichiers de machines virtuelles dans des environnements VMware vSphere.
+
+
+
+=== Volumes virtuels (vVols)
+
+Les vVols fournissent une abstraction au niveau du volume pour le stockage utilisé par une machine virtuelle. Il comprend plusieurs avantages et offre une alternative à l’utilisation d’un LUN traditionnel. Une banque de données vVol est généralement associée à un seul LUN qui agit comme conteneur pour les vVols.
+
+
+
+=== Politique de stockage des machines virtuelles
+
+Les stratégies de stockage VM sont créées dans vCenter Server sous Stratégies et profils.  Pour vVols, créez un ensemble de règles à l’aide des règles du fournisseur de type de stockage NetApp vVols .
+
+
+
+=== Récupération de site VMware Live
+
+VMware Live Site Recovery, anciennement connu sous le nom de Site Recovery Manager (SRM), offre des fonctionnalités de continuité des activités, de reprise après sinistre, de migration de site et de test sans interruption pour les environnements virtuels VMware.
+
+
+
+=== API VMware vSphere pour la reconnaissance du stockage (VASA)
+
+VASA est un ensemble d'API qui intègrent des baies de stockage à vCenter Server pour la gestion et l'administration.  L'architecture repose sur plusieurs composants, dont le fournisseur VASA, qui gère la communication entre VMware vSphere et les systèmes de stockage.
+
+
+
+=== API de stockage VMware vSphere - Intégration de baies (VAAI)
+
+VAAI est un ensemble d’API qui permet la communication entre les hôtes VMware vSphere ESXi et les périphériques de stockage.  Les API incluent un ensemble d’opérations primitives utilisées par les hôtes pour décharger les opérations de stockage sur la baie. VAAI peut fournir des améliorations de performances significatives pour les tâches gourmandes en stockage.
+
+
+
+=== Cluster de stockage vSphere Metro
+
+vSphere Metro Storage Cluster (vMSC) est une architecture qui active et prend en charge vSphere dans un déploiement de cluster étendu. Les solutions vMSC sont prises en charge avec NetApp MetroCluster et SnapMirror Active Sync (anciennement SMBC).  Ces solutions offrent une continuité d’activité améliorée en cas de défaillance du domaine.  Le modèle de résilience est basé sur vos choix de configuration spécifiques. En savoir plus sur https://core.vmware.com/resource/vmware-vsphere-metro-storage-cluster-vmsc["Cluster de stockage VMware vSphere Metro"] .
+
+
+
+=== Banque de données vVols
+
+Le magasin de données vVols est une représentation de magasin de données logique d'un conteneur vVols créé et maintenu par un fournisseur VASA.
+
+
+
+=== Zéro RPO
+
+RPO signifie « objectif de point de récupération », c'est-à-dire la quantité de perte de données jugée acceptable pendant une période donnée.  Zéro RPO signifie qu’aucune perte de données n’est acceptable.

@@ -1,0 +1,47 @@
+---
+permalink: protect/fan-out-protection.html 
+sidebar: sidebar 
+keywords:  
+summary: Dans une protection en éventail, le groupe de cohérence est doublement protégé avec une relation synchrone sur le premier cluster ONTAP de destination et avec une relation asynchrone sur le deuxième cluster ONTAP de destination. 
+---
+= Protection en éventail
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dans une protection en éventail, le groupe de cohérence est doublement protégé avec une relation synchrone sur le premier cluster ONTAP de destination et avec une relation asynchrone sur le deuxième cluster ONTAP de destination. Les flux de travail de création, de modification et de suppression de la protection de synchronisation active SnapMirror maintiennent la protection synchrone.  Les flux de travail de basculement et de reprotection SRM maintiennent la protection asynchrone.
+
+Afin d'établir une protection en éventail, vous devez associer trois clusters de sites et SVM.
+
+Exemple:
+
+|===
+
+
+| Si | alors 
+
+
+ a| 
+* Le groupe de cohérence source se trouve sur le cluster c1 et le SVM svm1
+* Le premier groupe de cohérence de destination se trouve sur le cluster c2 et SVM svm2 et
+* Le deuxième groupe de cohérence de destination se trouve sur le cluster c3 et SVM svm3
+
+ a| 
+* Le cluster peering sur le cluster ONTAP source sera (C1, C2) et (C1, C3).
+* Le cluster peering sur le premier cluster ONTAP de destination sera (C2, C1) et (C2, C3) et
+* Le cluster peering sur le deuxième cluster ONTAP de destination sera (C3, C1) et (C3, C2).
+* Le peering SVM sur la SVM source sera (svm1, svm2) et (svm1, svm3).
+* Le peering SVM sur la première destination SVM sera (svm2, svm1) et (svm2, svm3) et
+* Le peering SVM sur la deuxième destination SVM sera (svm3, svm1) et (svm3, svm2).
+
+
+|===
+Le schéma suivant montre la configuration de la protection contre le déploiement :image:../media/fan-out-protection.png["Configuration de la protection en éventail"] image:../media/fan-out-protection-relationship.png["Relation de protection en éventail"]
+
+*Mesures*
+
+. Créez un nouveau magasin de données d'espace réservé. Référer https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/about-placeholder-virtual-machines/configure-a-placeholder-datastore.html["Sélectionnez un magasin de données d'espace réservé"]
+. Ajouter une banque de données à la protection du cluster hôtelink:../manage/edit-hostcluster-protection.html["Modifier le cluster d'hôtes protégé"] .  Vous devez ajouter des types de politiques asynchrones et synchrones.
+

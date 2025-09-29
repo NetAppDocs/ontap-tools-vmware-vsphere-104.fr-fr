@@ -1,0 +1,25 @@
+---
+permalink: manage/expand-storage-of-vvol-datastore.html 
+sidebar: sidebar 
+keywords: virtual volume datastores 
+summary: 'Lorsque vous cliquez avec le bouton droit sur l"objet de banque de données dans la vue d"objet vCenter, les actions prises en charge par les ONTAP tools for VMware vSphere s"affichent sous la section du plug-in.' 
+---
+= Développer les banques de données vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous cliquez avec le bouton droit sur l'objet de banque de données dans la vue d'objet vCenter, les actions prises en charge par les ONTAP tools for VMware vSphere s'affichent sous la section du plug-in.  Des actions spécifiques sont activées en fonction du type de banque de données et des privilèges utilisateur actuels.
+
+
+NOTE: L'opération d'extension de la banque de données vVols n'est pas applicable aux banques de données vVols basées sur le système ASA r2.
+
+.Étapes
+. Depuis la page d’accueil de vSphere Client, sélectionnez *Hôtes et clusters*.
+. Dans le volet de navigation, sélectionnez le centre de données qui contient le magasin de données.
+. Cliquez avec le bouton droit sur le magasin de données et sélectionnez * Outils NetApp ONTAP * > * Ajouter du stockage au magasin de données *.
+. Dans la fenêtre *Créer ou sélectionner des volumes*, vous pouvez soit créer de nouveaux volumes, soit choisir parmi les volumes existants.  L'interface utilisateur est explicite.  Suivez les instructions selon votre choix.
+. Dans la fenêtre *Résumé*, vérifiez les sélections et sélectionnez *Développer*. Vous pouvez suivre la progression dans le panneau des tâches récentes.
+

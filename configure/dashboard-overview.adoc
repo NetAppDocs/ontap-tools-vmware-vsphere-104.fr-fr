@@ -1,0 +1,46 @@
+---
+permalink: configure/dashboard-overview.html 
+sidebar: sidebar 
+keywords: user roles 
+summary: 'Lorsque vous sélectionnez l"icône du plug-in ONTAP tools for VMware vSphere dans la section Raccourcis du client vCenter, l"interface utilisateur accède à la page de présentation.  Cette page agit comme un tableau de bord vous fournissant le résumé des ONTAP tools for VMware vSphere .' 
+---
+= Présentation du tableau de bord des ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous sélectionnez l'icône du plug-in ONTAP tools for VMware vSphere dans la section Raccourcis du client vCenter, l'interface utilisateur accède à la page de présentation.  Cette page agit comme un tableau de bord vous fournissant le résumé des ONTAP tools for VMware vSphere .
+
+Dans le cas d'une configuration Enhanced Linked Mode (ELM), la liste déroulante de sélection de vCenter Server apparaît et vous pouvez sélectionner un vCenter Server souhaité pour voir les données qui le concernent. Cette liste déroulante est disponible pour toutes les autres vues de liste du plug-in. La sélection de vCenter Server effectuée sur une page persiste dans les onglets du plug-in.image:../media/remote-plugin-dashboard.png["Aperçu du tableau de bord"]
+
+Depuis la page d'aperçu, vous pouvez exécuter l'action *Découverte*.  L'action de découverte exécute la découverte au niveau de vCenter pour détecter tous les backends de stockage, hôtes, banques de données et états/relations de protection nouvellement ajoutés ou mis à jour.  Vous pouvez exécuter une découverte d’entités à la demande sans avoir à attendre la découverte planifiée.
+
+
+NOTE: Le bouton Action ne sera activé que si vous avez le privilège d’effectuer l’action de découverte.
+
+Une fois la demande de découverte soumise, vous pouvez suivre la progression de l'action dans le panneau des tâches récentes.
+
+Le tableau de bord comporte plusieurs cartes présentant différents éléments du système.  Le tableau suivant montre les différentes cartes et ce qu'elles représentent.
+
+|===
+
+
+| *Carte* | *Description* 
+
+
+| Statut | La carte d'état indique le nombre de backends de stockage et l'état de santé général des backends de stockage et du fournisseur VASA.  L'état des backends de stockage indique *Sain* lorsque l'état de tous les backends de stockage est normal et il indique *Mauvais état* si l'un des backends de stockage présente un problème (état Inconnu/Inaccessible/Dégradé).  Sélectionnez l’info-bulle pour ouvrir les détails d’état des backends de stockage.  Vous pouvez sélectionner n'importe quel backend de stockage pour plus de détails.  Le lien *Autres états du fournisseur VASA* affiche l’état actuel du fournisseur VASA enregistré dans vCenter Server. 
+
+
+| Backends de stockage - Capacité | Cette carte affiche la capacité totale utilisée et disponible de tous les backends de stockage pour l'instance vCenter Server sélectionnée. Pour les systèmes de stockage ASA r2, les données de capacité ne sont pas affichées, car il s'agit d'un système désagrégé. 
+
+
+| Machines virtuelles | Cette carte montre les 10 meilleures machines virtuelles classées par mesure de performance.  Vous pouvez sélectionner l'en-tête pour obtenir les 10 meilleures machines virtuelles pour la métrique sélectionnée, triées par ordre croissant ou décroissant.  Les modifications de tri et de filtrage apportées à la carte persistent jusqu'à ce que vous modifiiez ou effaciez le cache du navigateur. 
+
+
+| Magasins de données | Cette carte montre les 10 meilleurs magasins de données triés par mesure de performance.  Vous pouvez sélectionner l'en-tête pour obtenir les 10 premiers magasins de données pour la métrique sélectionnée, triés par ordre croissant ou décroissant.  Les modifications de tri et de filtrage apportées à la carte persistent jusqu'à ce que vous modifiiez ou effaciez le cache du navigateur.  Il existe une liste déroulante Type de magasin de données pour sélectionner le type de magasins de données : NFS, VMFS ou vVols. 
+
+
+| Carte de conformité de l'hôte ESXi | Cette carte affiche l'état de conformité global de tous les paramètres des hôtes ESXi (pour le vCenter sélectionné) par rapport aux paramètres d'hôte NetApp recommandés par groupe/catégorie de paramètres.  Vous pouvez sélectionner le lien *Appliquer les paramètres recommandés* pour appliquer les paramètres recommandés.  Vous pouvez sélectionner l’état de conformité des hôtes pour voir la liste des hôtes. 
+|===

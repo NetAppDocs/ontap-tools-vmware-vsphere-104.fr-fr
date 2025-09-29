@@ -1,0 +1,30 @@
+---
+permalink: protect/verify-the-replicated-storage-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous devez vérifier que le site protégé et le site de récupération sont correctement couplés après la configuration de l"adaptateur de réplication de stockage (SRA).  Le système de stockage répliqué doit être détectable à la fois par le site protégé et par le site de récupération.' 
+---
+= Vérifier les systèmes de stockage répliqués
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez vérifier que le site protégé et le site de récupération sont correctement couplés après la configuration de l'adaptateur de réplication de stockage (SRA).  Le système de stockage répliqué doit être détectable à la fois par le site protégé et par le site de récupération.
+
+.Avant de commencer
+* Vous devriez avoir configuré votre système de stockage.
+* Vous devez avoir associé le site protégé et le site de récupération à l’aide du gestionnaire de baies VMware Live Site Recovery.
+* Vous devez avoir activé la licence FlexClone et la licence SnapMirror avant d'effectuer l'opération de basculement de test et l'opération de basculement pour SRA.
+* Vous devez avoir les mêmes politiques et planifications SnapMirror sur les sites source et de destination.
+
+
+.Étapes
+. Connectez-vous à votre vCenter Server.
+. Accédez à *Site Recovery* > *Réplication basée sur la baie*.
+. Sélectionnez la paire de tableaux requise et vérifiez les détails correspondants.
++
+Les systèmes de stockage doivent être découverts sur le site protégé et sur le site de récupération avec le statut « Activé ».
+
+

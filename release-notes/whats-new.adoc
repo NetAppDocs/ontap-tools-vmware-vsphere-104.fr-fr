@@ -1,0 +1,31 @@
+---
+permalink: release-notes/whats-new.html 
+sidebar: sidebar 
+keywords: 'what"s new, release notes, 10.4, ONTAP tools for VMware vSphere' 
+summary: Découvrez les nouvelles fonctionnalités disponibles dans les ONTAP tools for VMware vSphere 10.4. 
+---
+= Nouveautés des ONTAP tools for VMware vSphere 10.4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez les nouvelles fonctionnalités disponibles dans les ONTAP tools for VMware vSphere 10.4.
+
+[cols="30%,70%"]
+|===
+| Mise à jour | Description 
+
+
+| link:../configure/create-datastore.html["Prise en charge du système ASA r2 avec 12 nœuds par cluster"] | Les ONTAP tools for VMware vSphere 10.4 prennent en charge les flux de travail pour les systèmes de stockage ASA r2 avec jusqu'à 12 nœuds par cluster, améliorant ainsi l'efficacité et l'évolutivité de la gestion des données.  Il prend en charge les magasins de données vVols avec les protocoles iSCSI et FC, ainsi que les magasins de données VMFS avec les protocoles iSCSI, FC et NVMe, offrant des options de stockage flexibles et améliorées. 
+
+
+| link:../manage/add-ntpserver.html["Améliorations de l'interface utilisateur du gestionnaire d'outils ONTAP"] | Vous pouvez désormais activer le serveur NTP pour une synchronisation horaire précise dans l'environnement et configurer les paramètres de télémétrie pour surveiller et analyser les performances du système à partir de l'interface du gestionnaire d'outils ONTAP .  Ces paramètres ne sont plus disponibles dans la console de maintenance. 
+
+
+| Capacités de sécurité améliorées | Les fonctionnalités de sécurité offrent désormais une protection améliorée et une conformité aux normes du secteur, offrant une expérience robuste et conviviale pour aider les administrateurs à gérer plus efficacement les environnements VMware. 
+
+
+| link:../protect/enable-storage-replication-adapter.html["Capacités de reprise après sinistre SRA améliorées"] | Les ONTAP tools for VMware vSphere 10.4 prennent désormais en charge les opérations de reprise après sinistre à l’aide de Site Recovery Appliance (SRA) avec des snapshots nommés personnalisés en plus des copies de snapshots planifiées SnapMirror . 
+|===

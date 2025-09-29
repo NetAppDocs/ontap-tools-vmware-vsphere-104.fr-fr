@@ -1,0 +1,107 @@
+---
+permalink: deploy/ontap-tools-deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: Les ONTAP tools for VMware vSphere sont déployés sous forme de nœud unique de petite taille, avec des services de base pour la prise en charge des banques de données NFS et VMFS. 
+---
+= Déployer les ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les ONTAP tools for VMware vSphere sont déployés sous forme de nœud unique de petite taille, avec des services de base pour la prise en charge des banques de données NFS et VMFS. Le déploiement des outils ONTAP peut prendre jusqu'à 45 minutes.
+
+.Avant de commencer
+Dans VMware, une bibliothèque de contenu est un objet conteneur qui stocke des modèles de VM, des modèles d'application virtuelle et d'autres types de fichiers. Le déploiement avec une bibliothèque de contenu offre une expérience fluide, car elle ne dépend pas de la connectivité réseau.
+
+
+NOTE: Vous devez stocker la bibliothèque de contenu sur une banque de données partagée afin que tous les hôtes d’un cluster puissent y accéder.  Créez une bibliothèque de contenu pour stocker l'OVA avant de configurer l'appliance sur la configuration HA.  Ne supprimez pas le modèle de bibliothèque de contenu après le déploiement.
+
+
+NOTE: Pour activer le déploiement HA ultérieurement, ne déployez pas la machine virtuelle hébergeant les outils ONTAP directement sur un hôte ESXi.  Déployez-le plutôt sur un cluster ou un pool de ressources.
+
+Si vous n’avez pas de bibliothèque de contenu, suivez ces étapes pour en créer une :
+
+*Créer une bibliothèque de contenu* Si vous prévoyez d'utiliser uniquement un petit déploiement de nœud unique, la création d'une bibliothèque de contenu n'est pas nécessaire.
+
+. Téléchargez le fichier contenant les binaires (_.ova_) et les certificats signés pour les ONTAP tools for VMware vSphere à partir du  https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["Site de support NetApp"^] .
+. Connectez-vous au client vSphere
+. Sélectionnez le menu client vSphere et sélectionnez *Bibliothèques de contenu*.
+. Sélectionnez *Créer* à droite de la page.
+. Donnez un nom à la bibliothèque et créez la bibliothèque de contenu.
+. Accédez à la bibliothèque de contenu que vous avez créée.
+. Sélectionnez *Actions* à droite de la page et sélectionnez *Importer l'élément* et importez le fichier OVA.
+
+
+
+NOTE: Pour plus d'informations, reportez-vous à https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["Création et utilisation de la bibliothèque de contenu"] blog.
+
+
+NOTE: Avant de procéder au déploiement, définissez le planificateur de ressources distribuées (DRS) du cluster sur l'inventaire sur « Conservateur ». Cela garantit que les machines virtuelles ne sont pas migrées pendant l'installation.
+
+Les ONTAP tools for VMware vSphere sont initialement déployés en tant que configuration non HA. Pour évoluer vers un déploiement HA, vous devrez activer le plug-in à chaud du processeur et le plug-in à chaud de la mémoire.  Vous pouvez effectuer cette étape dans le cadre du processus de déploiement ou modifier les paramètres de la machine virtuelle après le déploiement.
+
+.Étapes
+. Téléchargez le fichier contenant les binaires (_.ova_) et les certificats signés pour les ONTAP tools for VMware vSphere à partir du  https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["Site de support NetApp"^] . Si vous avez importé l'OVA dans la bibliothèque de contenu, vous pouvez ignorer cette étape et passer à l'étape suivante.
+. Connectez-vous au serveur vSphere.
+. Accédez au pool de ressources, au cluster ou à l’hôte sur lequel vous souhaitez déployer l’OVA.
++
+
+NOTE: Ne stockez jamais les ONTAP tools for VMware vSphere sur les banques de données vVols qu'elle gère.
+
+. Vous pouvez déployer l'OVA à partir de la bibliothèque de contenu ou du système local.
++
+|===
+
+
+| Du système local | De la bibliothèque de contenu 
+
+
+| a. Cliquez avec le bouton droit de la souris et sélectionnez *Déployer le modèle OVF...*. b. Choisissez le fichier OVA à partir de l'URL ou accédez à son emplacement, puis sélectionnez *Suivant*. | a. Accédez à votre bibliothèque de contenu et sélectionnez l'élément à déployer. b. Sélectionnez *Actions* > *Nouvelle machine virtuelle à partir de ce modèle*. 
+|===
+. Dans le champ *Sélectionnez un nom et un dossier*, entrez le nom de la machine virtuelle et choisissez son emplacement.
++
+** Si vous utilisez la version vCenter Server 8.0.3, sélectionnez l'option *Personnaliser le matériel de cette machine virtuelle*, ce qui activera une étape supplémentaire appelée *Personnaliser le matériel* avant de passer à la fenêtre *Prêt à terminer*.
+** Si vous utilisez la version vCenter Server 7.0.3, suivez les étapes de la section *Quelle est la prochaine étape ?* à la fin du déploiement.image:../media/select-name.png["Sélectionnez un nom et un dossier"]
+
+
+. Sélectionnez une ressource informatique et sélectionnez *Suivant*.  Vous pouvez également cocher la case *Mettre sous tension automatiquement la machine virtuelle déployée*.
+. Vérifiez les détails du modèle et sélectionnez *Suivant*.
+. Lisez et acceptez le contrat de licence et sélectionnez *Suivant*.
+. Sélectionnez le stockage pour la configuration et le format du disque et sélectionnez *Suivant*.
+. Sélectionnez le réseau de destination pour chaque réseau source et sélectionnez *Suivant*.
+. Dans la fenêtre *Personnaliser le modèle*, remplissez les champs obligatoires et sélectionnez *Suivant*.image:../media/customize-temp.png["Personnaliser le modèle"]
++
+** Les informations sont validées lors de l'installation. En cas d’écart, un message d’erreur s’affiche sur la console Web et vous êtes invité à le corriger.
+** Les noms d'hôtes doivent inclure des lettres (AZ, az), des chiffres (0-9) et des tirets (-).  Pour configurer la double pile, spécifiez le nom d’hôte mappé à l’adresse IPv6.
++
+
+NOTE: IPv6 pur n'est pas pris en charge.  Le mode mixte est pris en charge avec un VLAN contenant à la fois des adresses IPv6 et IPv4.
+
+** L'adresse IP des outils ONTAP est l'interface principale de communication avec les outils ONTAP .
+** IPv4 est le composant d'adresse IP de la configuration du nœud, qui peut être utilisé pour activer le shell de diagnostic et l'accès SSH sur le nœud à des fins de débogage et de maintenance.
+
+
+. Lorsque vous utilisez la version vCenter Server 8.0.3, dans la fenêtre *Personnaliser le matériel*, activez les options *Ajout à chaud du processeur* et *Prise à chaud de la mémoire* pour autoriser la fonctionnalité HA.image:../media/customize-hw.png["Personnaliser le matériel"]
+. Vérifiez les détails dans la fenêtre *Prêt à terminer*, sélectionnez *Terminer*.
++
+Au fur et à mesure que la tâche de déploiement est créée, la progression est affichée dans la barre des tâches vSphere.
+
+. Mettez la machine virtuelle sous tension après avoir terminé la tâche si l’option de mise sous tension automatique de la machine virtuelle n’a pas été sélectionnée.
+
+
+Vous pouvez suivre la progression de l'installation dans la console Web de la machine virtuelle.
+
+S'il y a des divergences dans le formulaire OVF, une boîte de dialogue demandera une action corrective. Utilisez le bouton Tab pour naviguer, effectuez les modifications nécessaires et sélectionnez *OK*. Vous disposez de trois tentatives pour résoudre les problèmes. Si les problèmes persistent après trois tentatives, le processus d'installation s'arrêtera et il est conseillé de réessayer l'installation sur une nouvelle machine virtuelle.
+
+.Quelle est la prochaine étape ?
+Si vous disposez des ONTAP tools for VMware vSphere avec vCenter Server 7.0.3, suivez ces étapes après le déploiement.
+
+. Connectez-vous au client vCenter
+. Mettez hors tension le nœud des outils ONTAP .
+. Accédez aux ONTAP tools for VMware vSphere sous *Inventaires* et sélectionnez l'option *Modifier les paramètres*.
+. Sous les options *CPU*, cochez la case *Activer l'ajout à chaud du processeur*
+. Sous les options *Mémoire*, cochez la case *Activer* en regard de *Prise en charge à chaud de la mémoire*.
+

@@ -1,0 +1,33 @@
+---
+permalink: configure/registration-process.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez enregistrer le fournisseur VASA auprès d"une instance vCenter Server à l"aide des ONTAP tools for VMware vSphere .' 
+---
+= Enregistrer le fournisseur VASA auprès d'une instance vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez enregistrer le fournisseur VASA auprès d'une instance vCenter Server à l'aide des ONTAP tools for VMware vSphere.  La section Paramètres du fournisseur VASA affiche l'état d'enregistrement du fournisseur VASA pour le vCenter Server sélectionné.  Dans un déploiement multi-vCenter, assurez-vous de disposer de certificats d’autorité de certification personnalisés pour chaque instance de vCenter Server.
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Sélectionnez *Raccourcis* > *Outils NetApp ONTAP * dans la section plug-ins.
+. Sélectionnez *Paramètres* > *Paramètres du fournisseur VASA*. Le statut d'enregistrement du fournisseur VASA sera affiché comme non enregistré.
+. Sélectionnez le bouton *Enregistrer* pour enregistrer le fournisseur VASA.
+. Saisissez un nom et des informations d’identification pour le fournisseur VASA. Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des traits de soulignement. La longueur du mot de passe doit être comprise entre 8 et 256 caractères.
+. Sélectionnez *S'inscrire*.
+. Après une inscription et une actualisation de la page réussies, le statut, le nom et la version du fournisseur VASA enregistré s'affichent.  Après l'inscription, l'action de désinscription est activée.
+
+
+.Quelle est la prochaine étape
+Vérifiez que le fournisseur VASA intégré est répertorié sous Fournisseur VASA à partir du client vCenter :
+
+.Étapes
+. Accédez à l’instance vCenter Server.
+. Connectez-vous avec les informations d'identification d'administrateur.
+. Sélectionnez *Fournisseurs de stockage* > *Configurer*.  Vérifiez que le fournisseur VASA intégré est correctement répertorié.
+

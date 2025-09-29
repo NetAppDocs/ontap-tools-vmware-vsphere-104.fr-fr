@@ -1,0 +1,36 @@
+---
+section: protect
+title: Protéger les banques de données et les machines virtuelles
+entries:
+- title: Protéger à l'aide de la protection du cluster hôte
+  url: "/configure/protect-cluster.html"
+- title: Protégez-vous en utilisant la protection SRA
+  entries:
+  - title: Configurer SRA pour protéger les banques de données
+    url: "/protect/enable-storage-replication-adapter.html"
+  - title: Configurer SRA pour les environnements SAN et NAS
+    url: "/protect/configure-storage-replication-adapter-for-san-environment.html"
+  - title: Configurer SRA pour les environnements à grande échelle
+    url: "/protect/configure-storage-replication-adapter-for-highly-scaled-environment.html"
+  - title: Configurer SRA sur le dispositif VMware Live Site Recovery
+    url: "/protect/configure-on-srm-appliance.html"
+  - title: Mettre à jour les informations d'identification SRA
+    url: "/protect/update-credentials.html"
+  - title: Configurer les sites protégés et de récupération
+    url: "/protect/configure-protection-groups.html"
+  - title: Configurer les ressources du site protégé et de récupération
+    entries:
+    - title: Configurer les mappages réseau
+      url: "/protect/map-network.html"
+    - title: Configurer les mappages de dossiers
+      url: "/protect/map-folder.html"
+    - title: Configurer les mappages de ressources
+      url: "/protect/map-resource.html"
+    - title: Configurer des magasins de données d'espace réservé
+      url: "/protect/configure-placeholder-datastores.html"
+    - title: Configurer SRA à l'aide du gestionnaire de baies
+      url: "/protect/configure-array-manager.html"
+  - title: Vérifier les systèmes de stockage répliqués
+    url: "/protect/verify-the-replicated-storage-environment.html"
+  - title: Protection en éventail
+    url: "/protect/fan-out-protection.html"

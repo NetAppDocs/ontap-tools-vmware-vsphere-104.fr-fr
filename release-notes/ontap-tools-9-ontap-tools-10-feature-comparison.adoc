@@ -1,0 +1,46 @@
+---
+permalink: release-notes/ontap-tools-9-ontap-tools-10-feature-comparison.html 
+sidebar: sidebar 
+keywords: release notes, feature, comparison 
+summary: En savoir plus sur la comparaison des fonctionnalités des ONTAP tools for VMware vSphere 9 et ONTAP tools for VMware vSphere 10 
+---
+= Comparaison des fonctionnalités des ONTAP tools for VMware vSphere 9 et ONTAP tools for VMware vSphere 10
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez si la migration des ONTAP tools for VMware vSphere 9 vers les ONTAP tools for VMware vSphere 10.1 ou versions ultérieures vous convient.
+
+
+NOTE: Pour obtenir les informations de compatibilité les plus récentes, reportez-vous à https://mysupport.netapp.com/matrix["Outil de matrice d'interopérabilité NetApp"^] .
+
+[cols="20%,25%,25%,30%"]
+|===
+| Fonctionnalité | Outils ONTAP 9.13 | Outils ONTAP 10.1 | Outils ONTAP 10.2 et versions ultérieures 
+
+
+| Proposition de valeur clé | Rationalisez et simplifiez les opérations du jour 0 au jour 2 grâce à des capacités de sécurité, de conformité et d'automatisation améliorées | Évolution des outils ONTAP 10.x vers la parité 9.xx tout en étendant la haute disponibilité, les performances et les limites d'évolutivité | Prise en charge étendue pour inclure FC pour VMFS et vVols, et NVMe-oF/FC, NVMe-oF/TCP pour VMFS uniquement.  Facilité d'utilisation pour NetApp SnapMirror, configuration simple pour les clusters de stockage métropolitains vSphere et prise en charge de VMware Live Site Recovery sur trois sites 
+
+
+| Qualification de la version ONTAP | ONTAP 9.9.1 à ONTAP 9.16.1 | ONTAP 9.12.1 à ONTAP 9.14.1 | ONTAP 9.12.1 à ONTAP 9.15.1 pour les outils ONTAP 10.2. ONTAP 9.14.1, 9.15.1, 9.16.0 et 9.16.1 pour les outils ONTAP 10.3. ONTAP 9.14.1, 9.15.1, 9.16.0 et 9.16.1 pour les outils ONTAP 10.4. ONTAP 9.16.1P3 et versions ultérieures sont requis pour les outils ONTAP 10.4 lors de l'utilisation des systèmes ASA r2. 
+
+
+| Prise en charge des versions VMware | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.5 vers VMware Live Site Recovery 9.0 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.7 vers VMware Live Site Recovery 9.0 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.7 vers VMware Live Site Recovery 9.0 
+
+
+| Prise en charge du protocole | Magasins de données NFS et VMFS : NFS (v3 et v4.1), VMFS (iSCSI et FCP) Magasins de données vVols : iSCSI, FCP, NVMe/FC, NFS v3 | Magasins de données NFS et VMFS : NFS (v3 et v4.1), VMFS (iSCSI) Magasins de données vVols : iSCSI, NFS v3 | Magasins de données NFS et VMFS : NFS (v3 et v4.1), VMFS (iSCSI/FCP/NVMe-oF) Magasins de données vVols : iSCSI, FCP, NFS v3 
+
+
+| Évolutivité | Hôtes et machines virtuelles : 300 hôtes, jusqu'à 10 000 VM ; magasins de données : 600 NFS, jusqu'à 50 VMFS, jusqu'à 250 vVols ; vVols: jusqu'à 14 000 | Hôtes et machines virtuelles : 600 hôtes vVols: jusqu'à 140 000 | Hôtes et machines virtuelles : 600 hôtes vVols: jusqu'à 140 000 
+
+
+| Observabilité | Tableaux de bord des performances, de la capacité et de la conformité de l'hôte Rapports dynamiques sur les machines virtuelles et les banques de données | Tableaux de bord mis à jour sur les performances, la capacité et la conformité de l'hôte Rapports dynamiques sur les machines virtuelles et les banques de données | Tableaux de bord mis à jour sur les performances, la capacité et la conformité de l'hôte Rapports dynamiques sur les machines virtuelles et les banques de données 
+
+
+| Protection des données | Réplication SRA pour VMFS et NFS Réplication basée sur FlexVols pour vVols Intégration SCV et interopérable pour la sauvegarde | Réplication SRA pour les banques de données iSCSI VMFS et NFS v3 | Réplication SRA pour les banques de données iSCSI VMFS et NFS v3, protection sur trois sites combinant SMAS et VMware Live Site Recovery. 
+
+
+| Assistance aux fournisseurs VASA | VASA 4,0 | VASA 3,0 | VASA 3,0 
+|===

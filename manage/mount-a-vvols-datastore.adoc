@@ -1,0 +1,23 @@
+---
+permalink: manage/mount-a-vvols-datastore.html 
+sidebar: sidebar 
+keywords: Mount vVol 
+summary: 'Vous pouvez monter une banque de données VMware Virtual Volumes (vVols) sur un ou plusieurs hôtes supplémentaires à l"aide de la boîte de dialogue Monter la banque de données vVols .  Le montage du magasin de données fournit un accès au stockage à des hôtes supplémentaires.  Vous ne pouvez démonter la banque de données vVols que via les API.' 
+---
+= Monter une banque de données vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez monter une banque de données VMware Virtual Volumes (vVols) sur un ou plusieurs hôtes supplémentaires pour fournir un accès au stockage à des hôtes supplémentaires.  Vous ne pouvez démonter la banque de données vVols que via les API.
+
+.Étapes
+. Depuis la page d’accueil de vSphere Client, sélectionnez *Hôtes et clusters*.
+. Dans le volet de navigation, sélectionnez le centre de données qui contient le magasin de données.
+. Cliquez avec le bouton droit sur le magasin de données et sélectionnez * Outils NetApp ONTAP * > * Monter le magasin de données *.
+. Dans la boîte de dialogue *Monter les banques de données sur les hôtes*, sélectionnez les hôtes sur lesquels vous souhaitez monter la banque de données, puis sélectionnez *Monter*.
+
+
+Vous pouvez suivre la progression dans le panneau des tâches récentes.

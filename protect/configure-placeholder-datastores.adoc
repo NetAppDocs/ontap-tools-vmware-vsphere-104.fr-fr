@@ -1,0 +1,31 @@
+---
+permalink: protect/configure-placeholder-datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous devez configurer un magasin de données d"espace réservé pour réserver un emplacement dans l"inventaire vCenter du site de récupération pour la machine virtuelle protégée (VM). Ce magasin de données n"a pas besoin d"être volumineux, car les VM d"espace réservé sont petites et n"utilisent que quelques centaines de kilo-octets, voire moins.' 
+---
+= Configurer des magasins de données d'espace réservé
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez configurer un magasin de données d'espace réservé pour réserver un emplacement dans l'inventaire vCenter du site de récupération pour la machine virtuelle protégée (VM). Ce magasin de données n'a pas besoin d'être volumineux, car les VM d'espace réservé sont petites et n'utilisent que quelques centaines de kilo-octets, voire moins.
+
+.Avant de commencer
+* Vous devez avoir connecté les sites protégés et de récupération.
+* Vous devriez avoir configuré vos mappages de ressources.
+
+
+.Étapes
+. Connectez-vous à vCenter Server et sélectionnez *Site Recovery* > *Sites*.
+. Sélectionnez votre site protégé et sélectionnez *Gérer*.
+. Sélectionnez *Magasins de données d'espace réservé* > *Nouveau* dans l'onglet Gérer pour créer un nouveau magasin de données d'espace réservé.
+. Sélectionnez le magasin de données approprié et sélectionnez *OK*.
++
+
+NOTE: Les magasins de données d'espace réservé peuvent être locaux ou distants et ne doivent pas être répliqués.
+
+. Répétez les étapes 3 à 5 pour configurer une banque de données d’espace réservé pour le site de récupération.
+

@@ -1,0 +1,49 @@
+---
+permalink: manage/attach-detach-disk.html 
+sidebar: sidebar 
+keywords:  
+summary: Attachez un disque de données à une machine virtuelle pour étendre la capacité de stockage. 
+---
+= Attacher ou détacher un disque de données d'une machine virtuelle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Attacher un disque de données à une machine virtuelle
+
+Attachez un disque de données à une machine virtuelle pour étendre la capacité de stockage.
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur une machine virtuelle dans l’inventaire et sélectionnez *Modifier les paramètres*.
+. Dans l’onglet *Matériel virtuel*, sélectionnez *Disque dur existant*.
+. Sélectionnez la machine virtuelle sur laquelle se trouve le disque.
+. Sélectionnez le disque que vous souhaitez connecter et sélectionnez *OK*
+
+
+.Résultat
+Le disque dur apparaît dans la liste des périphériques matériels virtuels.
+
+
+
+== Détacher un disque de données de la machine virtuelle
+
+Vous pouvez détacher un disque de données attaché à une machine virtuelle lorsqu'il n'est plus nécessaire.  Lorsque vous détachez le disque de la machine virtuelle, il n’est pas automatiquement supprimé ; il reste sur le système de stockage ONTAP .
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur une machine virtuelle dans l’inventaire et sélectionnez *Modifier les paramètres*.
+. Déplacez votre pointeur sur le disque et sélectionnez *Supprimer*.
++
+
+NOTE: Le disque est supprimé de la machine virtuelle. Si d'autres machines virtuelles partagent le disque, les fichiers du disque ne sont pas supprimés.
+
+
+
+.Informations connexes
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-virtual-machine-administration-guide-7-0/configuring-virtual-machine-hardwarevm-admin/virtual-disk-configurationvm-admin/add-a-hard-disk-to-a-virtual-machinevm-admin/add-a-new-hard-disk-to-a-virtual-machinevm-admin.html["Ajouter un nouveau disque dur à une machine virtuelle"]
+
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-virtual-machine-administration-guide-7-0/configuring-virtual-machine-hardwarevm-admin/virtual-disk-configurationvm-admin/add-a-hard-disk-to-a-virtual-machinevm-admin/add-an-existing-hard-disk-to-a-virtual-machinevm-admin.html["Ajouter un disque dur existant à une machine virtuelle"]

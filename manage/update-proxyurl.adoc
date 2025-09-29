@@ -1,0 +1,25 @@
+---
+permalink: manage/update-proxyurl.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez collecter des fichiers journaux pour les ONTAP tools for VMware vSphere à partir des options disponibles dans l"interface utilisateur graphique (GUI) des ONTAP tools for VMware vSphere .  Le support technique peut vous demander de collecter les fichiers journaux pour aider à résoudre un problème.' 
+---
+= Mettre à jour l'URL du proxy AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mettez à jour l'URL du proxy AutoSupport pour garantir le bon fonctionnement de la fonctionnalité AutoSupport dans les scénarios où un serveur proxy est utilisé pour le contrôle d'accès au réseau ou les mesures de sécurité.  Il permet aux données AutoSupport d'être acheminées via le proxy approprié, permettant une transmission sécurisée et une conformité.
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Paramètres* dans la barre latérale.
+. Sélectionnez l'option *Paramètres* > *Télémétrie* > *Modifier*.
+. Saisissez une *URL proxy* valide et enregistrez les modifications.
++
+Si vous désactivez AutoSupport, l'URL proxy est également désactivée.
+
+

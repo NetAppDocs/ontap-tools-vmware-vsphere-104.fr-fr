@@ -1,0 +1,33 @@
+---
+permalink: concepts/high-availability.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Les ONTAP tools for VMware vSphere prennent en charge une configuration haute disponibilité (HA) pour aider à fournir une fonctionnalité ininterrompue des ONTAP tools for VMware vSphere en cas de panne.' 
+---
+= Haute disponibilité des ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les ONTAP tools for VMware vSphere prennent en charge une configuration haute disponibilité (HA) pour aider à fournir une fonctionnalité ininterrompue des ONTAP tools for VMware vSphere en cas de panne.
+
+La solution de haute disponibilité (HA) permet une récupération rapide après des pannes causées par :
+
+* Panne de l'hôte
++
+
+NOTE: Seule la défaillance d'un seul nœud est prise en charge.
+
+* Panne de réseau
+* Panne de machine virtuelle (panne du système d'exploitation invité)
+* Crash de l'application (outils ONTAP )
+
+
+Aucune configuration supplémentaire n'est requise pour les ONTAP tools for VMware vSphere afin de fournir une haute disponibilité (HA).
+
+
+NOTE: Les ONTAP tools for VMware vSphere ne prennent pas en charge vCenter HA.
+
+Pour activer la fonctionnalité HA, l'ajout à chaud du processeur et le branchement à chaud de la mémoire doivent être activés lors du déploiement ou ultérieurement dans les paramètres des ONTAP tools for VMware vSphere VM.

@@ -1,0 +1,98 @@
+---
+permalink: manage/storage-backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Les backends de stockage sont des systèmes que les hôtes ESXi utilisent pour le stockage des données. 
+---
+= Gérer les backends de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les backends de stockage sont des systèmes que les hôtes ESXi utilisent pour le stockage des données.
+
+
+
+== Découvrir le stockage
+
+Vous pouvez exécuter la découverte d'un backend de stockage à la demande sans attendre qu'une découverte planifiée mette à jour les détails de stockage.
+
+Suivez les étapes ci-dessous pour découvrir les backends de stockage.
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Dans la page des raccourcis, sélectionnez * Outils NetApp ONTAP * sous la section plug-ins.
+. Dans le volet gauche des outils ONTAP , accédez à *Backends de stockage* et sélectionnez un backend de stockage.
+. Sélectionnez le menu des ellipses verticales et sélectionnez *Découvrir le stockage*
+
+
+Vous pouvez suivre la progression dans le panneau des tâches récentes.
+
+
+
+== Modifier les backends de stockage
+
+Suivez les étapes de cette section pour modifier un backend de stockage.
+
+. Connectez-vous au client vSphere.
+. Dans la page des raccourcis, sélectionnez * Outils NetApp ONTAP * sous la section plug-ins.
+. Dans le volet gauche des outils ONTAP , accédez à *Backends de stockage* et sélectionnez un backend de stockage.
+. Sélectionnez le menu des ellipses verticales et sélectionnez *Modifier* pour modifier les informations d'identification ou le nom du port. Vous pouvez suivre la progression dans le panneau des tâches récentes.
+
+
+Vous pouvez effectuer l'opération de modification pour les clusters ONTAP globaux à l'aide du gestionnaire d'outils ONTAP en procédant comme suit.
+
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez les backends de stockage dans la barre latérale.
+. Sélectionnez le backend de stockage que vous souhaitez modifier.
+. Sélectionnez le menu des ellipses verticales et sélectionnez *Modifier*.
+. Vous pouvez modifier les informations d'identification ou le port.  Saisissez le *Nom d'utilisateur* et le *Mot de passe* pour modifier le backend de stockage.
+
+
+
+
+== Supprimer les backends de stockage
+
+Vous devez supprimer tous les magasins de données attachés au backend de stockage avant de supprimer le backend de stockage. Suivez les étapes ci-dessous pour supprimer un backend de stockage.
+
+. Connectez-vous au client vSphere.
+. Dans la page des raccourcis, sélectionnez * Outils NetApp ONTAP * sous la section plug-ins.
+. Dans le volet gauche des outils ONTAP , accédez à *Backends de stockage* et sélectionnez un backend de stockage.
+. Sélectionnez le menu des ellipses verticales et sélectionnez *Supprimer*. Assurez-vous que le backend de stockage ne contient aucun magasin de données. Vous pouvez suivre la progression dans le panneau des tâches récentes.
+
+
+Vous pouvez effectuer l'opération de suppression pour les clusters ONTAP globaux à l'aide du gestionnaire d'outils ONTAP .
+
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Backends de stockage* dans la barre latérale.
+. Sélectionnez le backend de stockage que vous souhaitez supprimer
+. Sélectionnez le menu des ellipses verticales et sélectionnez *Supprimer*.
+
+
+
+
+== Vue détaillée du backend de stockage
+
+La page backend de stockage répertorie tous les backends de stockage. Vous pouvez effectuer des opérations de découverte, de modification et de suppression de stockage sur les backends de stockage que vous avez ajoutés et non sur le SVM enfant individuel sous le cluster.
+
+Lorsque vous sélectionnez le cluster parent ou l’enfant sous le backend de stockage, vous pouvez voir le résumé global du composant.  Lorsque vous sélectionnez le cluster parent, vous disposez d'une liste déroulante d'actions à partir de laquelle vous pouvez effectuer les opérations de découverte, de stockage, de modification et de suppression.
+
+La page récapitulative fournit les détails suivants :
+
+* État du backend de stockage
+* Informations sur la capacité
+* Informations de base sur la machine virtuelle
+* Informations réseau telles que l'adresse IP et le port du réseau. Pour le SVM enfant, les informations seront les mêmes que celles du backend de stockage parent.
+* Privileges autorisés et restreints pour le backend de stockage. Pour le SVM enfant, les informations seront les mêmes que celles du backend de stockage parent.  Les Privileges ne sont affichés que sur les backends de stockage basés sur des clusters.  Si vous ajoutez SVM comme backend de stockage, les informations sur les privilèges ne seront pas affichées.
+* La vue détaillée du cluster système ASA r2 n'inclut pas l'onglet des niveaux locaux lorsque la propriété désagrégée est définie sur « vrai » pour le SVM ou le cluster.
+* Pour les systèmes SVM ASA r2, le portlet de capacité n'est pas affiché.  Le portail de capacité n'est requis que lorsque la propriété désagrégée est définie sur « vrai » pour le SVM ou le cluster.
+* Pour les systèmes ASA r2 SVM, la section d'informations de base indique le type de plate-forme.
+
+
+L'onglet Interface fournit des informations détaillées sur l'interface.
+
+L'onglet Niveaux locaux fournit des informations détaillées sur la liste agrégée.

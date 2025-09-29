@@ -1,0 +1,60 @@
+---
+permalink: configure/add-storage-backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Les backends de stockage sont des systèmes que les hôtes ESXi utilisent pour le stockage des données. 
+---
+= Ajouter un backend de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'ajout d'un backend de stockage vous permet d'intégrer un cluster ONTAP .
+
+*À propos de cette tâche*
+
+Dans le cas de configurations multi-locataires où vCenter agit en tant que locataire avec un SVM associé, utilisez ONTAP Tools Manager pour ajouter le cluster.  Associez le backend de stockage au vCenter Server pour le mapper globalement à l’instance vCenter Server intégrée.  Le locataire vCenter doit intégrer les machines virtuelles de stockage (SVM) souhaitées.  Cela permet à un utilisateur SVM de provisionner des banques de données vVols .  Vous pouvez ajouter du stockage dans vCenter à l’aide du SVM.
+
+Ajoutez les backends de stockage locaux avec les informations d’identification de cluster ou SVM à l’aide de l’interface utilisateur des outils ONTAP .  Ces backends de stockage sont limités à un seul vCenter.  Lors de l'utilisation des informations d'identification du cluster localement, les SVM associées sont automatiquement mappées au vCenter pour gérer les vVols ou VMFS.  Pour la gestion VMFS, y compris SRA, les outils ONTAP prennent en charge les informations d’identification SVM sans avoir besoin d’un cluster global.
+
+[role="tabbed-block"]
+====
+.Utilisation du gestionnaire d'outils ONTAP
+--
+
+NOTE: Dans une configuration multi-locataire, vous pouvez ajouter un cluster back-end de stockage globalement et SVM localement pour utiliser les informations d'identification de l'utilisateur SVM.
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Backends de stockage* dans la barre latérale.
+. Ajoutez le backend de stockage et fournissez l'adresse IP du serveur ou le nom de domaine complet, le nom d'utilisateur et le mot de passe.
++
+
+NOTE: Les LIF de gestion d'adresses IPv4 et IPv6 sont pris en charge.
+
+
+
+--
+.Utilisation de l'interface utilisateur du client vSphere
+--
+
+NOTE: Lors de la configuration d'un backend de stockage via l'interface utilisateur du client vSphere, il est important de noter que les banques de données vVols ne prennent pas en charge l'ajout direct d'un utilisateur SVM.
+
+. Connectez-vous au client vSphere.
+. Dans la page des raccourcis, sélectionnez * Outils NetApp ONTAP * sous la section plug-ins.
+. Sélectionnez *Backends de stockage* dans la barre latérale.
+. Ajoutez le backend de stockage et fournissez l’adresse IP du serveur, le nom d’utilisateur, le mot de passe et les détails du port.
++
+
+NOTE: Pour ajouter directement un utilisateur SVM, vous pouvez ajouter des informations d'identification basées sur le cluster et des LIF de gestion d'adresses IPv4 et IPv6 ou fournir des informations d'identification basées sur SVM avec un LIF de gestion SVM.
+
+
+
+.Quelle est la prochaine étape ?
+La liste est actualisée et vous pouvez voir le backend de stockage nouvellement ajouté dans la liste.
+
+--
+====

@@ -1,0 +1,42 @@
+---
+permalink: manage/collect-the-log-files.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez collecter des fichiers journaux pour les ONTAP tools for VMware vSphere à partir des options disponibles dans l"interface utilisateur graphique (GUI) des ONTAP tools for VMware vSphere .  Le support technique peut vous demander de collecter les fichiers journaux pour aider à résoudre un problème.' 
+---
+= Collecter les fichiers journaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez collecter des fichiers journaux pour les ONTAP tools for VMware vSphere à partir des options disponibles dans l'interface utilisateur du gestionnaire des outils ONTAP .  Le support technique peut vous demander de collecter les fichiers journaux pour aider à résoudre un problème.
+
+
+NOTE: La génération de journaux à partir du gestionnaire d’outils ONTAP inclut tous les journaux de toutes les instances de vCenter Server.  La génération de journaux à partir de l'interface utilisateur du client vCenter est limitée au serveur vCenter sélectionné.
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Lots de journaux* dans la barre latérale.
++
+Cette opération peut prendre plusieurs minutes.
+
+. Sélectionnez *Générer* pour générer les fichiers journaux.
+. Saisissez l’étiquette du groupe de journaux et sélectionnez *Générer*.
++
+Téléchargez le fichier tar.gz et envoyez-le au support technique.
+
+
+
+Suivez les étapes ci-dessous pour générer un bundle de journaux à l’aide de l’interface utilisateur du client vCenter :
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Depuis la page d'accueil de vSphere Client, accédez à *Support* > *Log bundle* > *Générer*.
+. Indiquez l'étiquette du fichier journal et générez-le. L'option de téléchargement s'affiche une fois les fichiers générés. Le téléchargement peut prendre un certain temps.
+
+
+
+NOTE: Le groupe de journaux généré remplace le groupe de journaux qui a été généré au cours des 3 derniers jours ou 72 dernières heures.

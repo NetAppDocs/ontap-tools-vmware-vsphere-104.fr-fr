@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: automation/first-call.html 
+keywords: ontap tools for vmware vsphere rest api reference, first rest api call, acquire access token 
+summary: Vous pouvez émettre un appel d’API à l’aide de curl pour démarrer avec les ONTAP tools for VMware vSphere 10. 
+---
+= Votre premier appel d'API REST ONTAP tools for VMware vSphere 10
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez émettre un appel d’API à l’aide de curl pour démarrer avec les ONTAP tools for VMware vSphere 10.
+
+
+
+== Avant de commencer
+
+Vous devez vérifier les informations et les paramètres requis dans les exemples de boucles.
+
+.Informations requises
+Vous avez besoin des éléments suivants :
+
+* ONTAP tools for VMware vSphere 10 Adresse IP ou FQDN ainsi que le port
+* Informations d'identification pour l'administrateur du gestionnaire d'outils ONTAP (nom d'utilisateur et mot de passe)
+
+
+.Paramètres et variables
+Les exemples curl présentés ci-dessous incluent des variables de style Bash.  Vous pouvez définir ces variables dans l'environnement Bash ou les mettre à jour manuellement avant d'émettre les commandes.  Si vous définissez les variables, le shell remplacera les valeurs dans chaque commande avant son exécution.  Les variables sont décrites dans le tableau ci-dessous.
+
+[cols="25,75"]
+|===
+| Variable | Description 
+
+
+| $FQDN_IP_PORT | Le nom de domaine complet ou l'adresse IP du gestionnaire d'outils ONTAP ainsi que le numéro de port. 
+
+
+| $MYUSER | Nom d'utilisateur pour le compte ONTAP Tools Manager. 
+
+
+| $MONMOT DE PASSE | Mot de passe associé au nom d'utilisateur du gestionnaire d'outils ONTAP . 
+
+
+| $ACCESS_TOKEN | Le jeton d'accès émis par le gestionnaire d'outils ONTAP . 
+|===
+Les commandes et la sortie suivantes sur la CLI Linux illustrent comment une variable peut être définie et affichée :
+
+[listing]
+----
+FQDN_IP_PORT=172.14.31.224:8443
+echo $FQDN_IP
+172.14.31.224:8443
+----
+
+
+== Étape 1 : Acquérir un jeton d’accès
+
+Vous devez acquérir un jeton d’accès pour utiliser l’API REST.  Un exemple de procédure de demande d’un jeton d’accès est présenté ci-dessous.  Vous devez remplacer les valeurs appropriées à votre environnement.
+
+[source, curl]
+----
+curl --request POST \
+--location "https://$FQDN_IP_PORT/virtualization/api/v1/auth/login” \
+--header "Content-Type: application/json" \
+--header "Accept: */*" \
+-d "{"username": "$MYUSER", "password": "$MYPASSWORD"}"
+----
+Copiez et enregistrez le jeton d’accès fourni dans la réponse.
+
+
+
+== Étape 2 : Émettre l’appel d’API REST
+
+Une fois que vous disposez d’un jeton d’accès, vous pouvez utiliser curl pour émettre un appel d’API REST.  Inclure le jeton d’accès acquis à la première étape.
+
+.Exemple de boucle
+[source, curl]
+----
+curl --request GET \
+--location "https://$FQDN_IP_PORT/virtualization/api/v1/vcenters" \
+--header "Accept: */*" \
+--header "x-auth: $ACCESS_TOKEN"
+----
+La réponse JSON inclut une liste des instances VMware vCenter configurées sur le gestionnaire d’outils ONTAP .

@@ -1,0 +1,147 @@
+---
+permalink: deploy/pre-deploy-checks.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Avant de déployer les ONTAP tools for VMware vSphere, vous devez connaître les exigences d’espace pour le package de déploiement et certaines exigences de base du système hôte. 
+---
+= Avant de commencer…​
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Assurez-vous que les exigences suivantes sont remplies avant de procéder au déploiement :
+
+|===
+| Exigences | Votre statut 
+
+
+| La version vSphere, la version ONTAP et la version de l'hôte ESXi sont compatibles avec la version des outils ONTP. | ❏ Oui ❏ Non 
+
+
+| L'environnement vCenter Server est installé et configuré | ❏ Oui ❏ Non 
+
+
+| Le cache du navigateur est supprimé | ❏ Oui ❏ Non 
+
+
+| Vous disposez des informations d'identification du serveur vCenter parent | ❏ Oui ❏ Non 
+
+
+| Vous disposez des informations de connexion pour l'instance vCenter Server, à laquelle les ONTAP tools for VMware vSphere se connecteront après le déploiement pour l'enregistrement. | ❏ Oui ❏ Non 
+
+
+| Le nom de domaine sur lequel le certificat est émis est mappé à l'adresse IP virtuelle dans un déploiement multi-vCenter où les certificats CA personnalisés sont obligatoires. | ❏ Oui ❏ Non 
+
+
+| Vous avez exécuté la vérification nslookup sur le nom de domaine pour vérifier si le domaine est résolu à l'adresse IP prévue. | ❏ Oui ❏ Non 
+
+
+| Le certificat est créé avec le nom de domaine et l'adresse IP des outils ONTAP . | ❏ Oui ❏ Non 
+
+
+| L'application des outils ONTAP et les services internes sont accessibles depuis le serveur vCenter. | ❏ Oui ❏ Non 
+
+
+| Lorsque vous utilisez des SVM multilocataires, vous disposez d'un LIF de gestion SVM sur chaque SVM. | ❏ Oui ❏ Non 
+|===
+
+
+== Feuille de travail de déploiement
+
+
+
+=== Pour un déploiement à nœud unique
+
+Utilisez la feuille de calcul suivante pour collecter les informations requises pour les ONTAP tools for VMware vSphere :
+
+|===
+| Exigence | Votre valeur 
+
+
+| Adresse IP pour l'application des outils ONTAP . Il s'agit de l'adresse IP permettant d'accéder à l'interface Web des outils ONTAP |  
+
+
+| Adresse IP virtuelle des outils ONTAP pour la communication interne. Cette adresse IP est utilisée pour la communication interne dans une configuration avec plusieurs instances d'outils ONTAP . Cette adresse IP ne doit pas être la même que l’adresse IP de l’application des outils ONTAP . |  
+
+
+| Nom d'hôte DNS pour le premier nœud |  
+
+
+| Serveur DNS principal |  
+
+
+| Serveur DNS secondaire |  
+
+
+| Domaine de recherche DNS |  
+
+
+| Adresse IPv4 pour le premier nœud. Il s'agit d'une adresse IPv4 unique pour l'interface de gestion des nœuds sur le réseau de gestion. |  
+
+
+| Masque de sous-réseau pour l'adresse IPv4 |  
+
+
+| Passerelle par défaut pour l'adresse IPv4 |  
+
+
+| Adresse IPv6 (facultatif) |  
+
+
+| Longueur du préfixe IPv6 (facultatif) |  
+
+
+| Passerelle pour l'adresse IPv6 (facultatif) |  
+|===
+
+NOTE: Créez des enregistrements DNS pour toutes les adresses IP ci-dessus.  Avant d’attribuer des noms d’hôtes, mappez-les aux adresses IP libres sur le DNS.  Toutes les adresses IP doivent être sur le même VLAN sélectionné pour le déploiement.
+
+
+
+=== Pour un déploiement à haute disponibilité (HA)
+
+Outre les exigences de déploiement d'un nœud unique, vous aurez besoin des informations suivantes pour le déploiement HA :
+
+|===
+
+
+| Exigence | Votre valeur 
+
+
+| Serveur DNS principal |  
+
+
+| Serveur DNS secondaire |  
+
+
+| Domaine de recherche DNS |  
+
+
+| Nom d'hôte DNS pour le deuxième nœud |  
+
+
+| Adresse IP du deuxième nœud |  
+
+
+| Nom d'hôte DNS pour le troisième nœud |  
+
+
+| Adresse IP du troisième nœud |  
+|===
+
+
+== Configuration du pare-feu réseau
+
+Ouvrez les ports requis pour les adresses IP dans votre pare-feu réseau.  Les outils ONTAP doivent pouvoir atteindre ce LIF via le port 443.  Se référer àlink:../deploy/prerequisites.html["Exigences portuaires"] pour les dernières mises à jour.
+
+
+
+== Paramètres de stockage ONTAP
+
+Pour garantir une intégration transparente du stockage ONTAP avec les ONTAP tools for VMware vSphere, tenez compte des paramètres suivants :
+
+* Si vous utilisez Fibre Channel (FC) pour la connectivité de stockage, configurez le zonage sur vos commutateurs FC pour connecter les hôtes ESXi aux LIF FC du SVM. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["En savoir plus sur le zonage FC et FCoE avec les systèmes ONTAP"]
+* Pour utiliser la réplication SnapMirror gérée par les outils ONTAP , l'administrateur de stockage ONTAP doit créer https://docs.netapp.com/us-en/ontap/peering/create-cluster-relationship-93-later-task.html["Relations entre homologues du cluster ONTAP"] et https://docs.netapp.com/us-en/ontap/peering/create-intercluster-svm-peer-relationship-93-later-task.html["Relations entre homologues SVM intercluster ONTAP"] dans ONTAP avant d'utiliser SnapMirror.
+

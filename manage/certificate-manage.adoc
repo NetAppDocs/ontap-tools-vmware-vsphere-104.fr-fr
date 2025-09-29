@@ -1,0 +1,79 @@
+---
+permalink: manage/certificate-manage.html 
+sidebar: sidebar 
+keywords:  
+summary: Une seule instance des ONTAP tools for VMware vSphere peut gérer plusieurs instances de vCenter Server.  Les ONTAP tools for VMware vSphere sont déployés avec un certificat auto-signé pour VASA Provider.  Avec cela, une seule instance de vCenter Server peut être gérée pour les banques de données vVols . 
+---
+= Gérer les certificats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un certificat auto-signé est généré pour les outils ONTAP et VASA Provider par défaut lors du déploiement.  À l’aide de l’interface du gestionnaire d’outils ONTAP , vous pouvez renouveler le certificat ou le mettre à niveau vers une autorité de certification personnalisée.  Les certificats CA personnalisés sont obligatoires dans un déploiement multi-vCenter.
+
+.Avant de commencer
+* Le nom de domaine sur lequel le certificat est émis doit être mappé à l'adresse IP virtuelle.
+* Exécutez la vérification nslookup sur le nom de domaine pour vérifier si le domaine est résolu à l'adresse IP prévue.
+* Les certificats doivent être créés avec le nom de domaine et l'adresse IP des outils ONTAP .
+
+
+
+NOTE: Une adresse IP d’outils ONTAP doit correspondre à un nom de domaine complet (FQDN).  Les certificats doivent contenir le même nom de domaine complet mappé à l'adresse IP des outils ONTAP dans le sujet ou dans les noms alternatifs du sujet.
+
+
+NOTE: Vous ne pouvez pas passer d’un certificat signé par une autorité de certification à un certificat auto-signé.
+
+[role="tabbed-block"]
+====
+.Certificat de mise à niveau des outils ONTAP
+--
+L'onglet Outils ONTAP affiche des détails tels que le type de certificat (auto-signé/signé par une autorité de certification) et le nom de domaine.  Lors du déploiement, un certificat auto-signé est généré par défaut.  Vous pouvez renouveler le certificat ou mettre à niveau le certificat vers CA.
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Certificats* > *Outils ONTAP * > *Renouveler* pour renouveler les certificats.
++
+Vous pouvez renouveler le certificat s’il a expiré ou s’il approche de sa date d’expiration.  L'option de renouvellement est disponible lorsque le type de certificat est signé par une autorité de certification.  Dans la fenêtre contextuelle, indiquez le certificat du serveur, la clé privée, l’autorité de certification racine et les détails du certificat intermédiaire.
+
++
+
+NOTE: Le système sera hors ligne jusqu'à ce que le certificat soit renouvelé et vous serez déconnecté de l'interface du gestionnaire d'outils ONTAP .
+
+. Pour mettre à niveau le certificat auto-signé vers un certificat CA personnalisé, sélectionnez l'option *Certificats* > *Outils ONTAP * > *Mettre à niveau vers CA*.
++
+.. Dans la fenêtre contextuelle, téléchargez le certificat du serveur, la clé privée du certificat du serveur, le certificat de l'autorité de certification racine et les fichiers de certificat intermédiaire.
+.. Saisissez le nom de domaine pour lequel vous avez généré ce certificat et mettez à niveau le certificat.
++
+
+NOTE: Le système sera hors ligne jusqu'à ce que la mise à niveau soit terminée et vous serez déconnecté de l'interface du gestionnaire d'outils ONTAP .
+
+
+
+
+
+--
+.Mettre à niveau le certificat du fournisseur VASA
+--
+Les ONTAP tools for VMware vSphere sont déployés avec un certificat auto-signé pour VASA Provider.  Avec cela, une seule instance de vCenter Server peut être gérée pour les banques de données vVols .  Lorsque vous gérez plusieurs instances de vCenter Server et que vous souhaitez activer la fonctionnalité vVols sur celles-ci, vous devez remplacer le certificat auto-signé par un certificat d'autorité de certification personnalisé.
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Certificats* > *Fournisseur VASA* ou *Outils ONTAP * > *Renouveler* pour renouveler les certificats.
+. Sélectionnez *Certificats* > *Fournisseur VASA* ou *Outils ONTAP * > *Mettre à niveau vers l'autorité de certification* pour mettre à niveau le certificat auto-signé vers un certificat d'autorité de certification personnalisé.
++
+.. Dans la fenêtre contextuelle, téléchargez le certificat du serveur, la clé privée du certificat du serveur, le certificat de l'autorité de certification racine et les fichiers de certificat intermédiaire.
+.. Saisissez le nom de domaine pour lequel vous avez généré ce certificat et mettez à niveau le certificat.
++
+
+NOTE: Le système sera hors ligne jusqu'à ce que la mise à niveau soit terminée et vous serez déconnecté de l'interface du gestionnaire d'outils ONTAP .
+
+
+
+
+
+--
+====

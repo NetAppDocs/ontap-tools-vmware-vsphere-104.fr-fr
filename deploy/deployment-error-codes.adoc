@@ -1,0 +1,132 @@
+---
+permalink: deploy/deployment-error-codes.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: 'Cette page décrit les codes d"erreur pour les opérations de déploiement, de redémarrage et de récupération des ONTAP tools for VMware vSphere .' 
+---
+= Codes d'erreur de déploiement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez rencontrer des codes d'erreur lors des opérations de déploiement, de redémarrage et de récupération des ONTAP tools for VMware vSphere .  Les codes d'erreur comportent cinq chiffres, les deux premiers chiffres représentant le script qui a rencontré le problème et les trois derniers chiffres représentant le flux de travail spécifique dans ce script.
+
+Tous les journaux d'erreurs sont enregistrés dans le fichier ansible-perl-errors.log pour faciliter le suivi et la résolution des problèmes. Ce fichier journal contient le code d'erreur et la tâche Ansible ayant échoué.
+
+
+NOTE: Les codes d'erreur fournis sur cette page sont fournis à titre indicatif uniquement.  Contactez l'équipe d'assistance si l'erreur persiste ou si aucune résolution n'est mentionnée.
+
+Le tableau suivant répertorie les codes d’erreur et les noms de fichiers correspondants.
+
+|===
+
+
+| *Code d'erreur* | *Nom du script* 
+
+
+| 00 | firstboot-network-config.pl, mode déploiement 
+
+
+| 01 | firstboot-network-config.pl, mise à niveau du mode 
+
+
+| 02 | firstboot-inputs-validation.pl 
+
+
+| 03 | firstboot-deploy-otv-ng.pl, déployer, HA 
+
+
+| 04 | firstboot-deploy-otv-ng.pl, déploiement, non-HA 
+
+
+| 05 | firstboot-deploy-otv-ng.pl, redémarrer 
+
+
+| 06 | firstboot-deploy-otv-ng.pl, mise à niveau, HA 
+
+
+| 07 | firstboot-deploy-otv-ng.pl, mise à niveau, non-HA 
+
+
+| 08 | firstboot-otv-recovery.pl 
+
+
+| 09 | post-deploy-upgrade.pl 
+|===
+Les trois derniers chiffres du code d'erreur indiquent l'erreur de flux de travail spécifique dans le script :
+
+|===
+
+
+| *Code d'erreur de déploiement* | *Flux de travail* | *Résolution* 
+
+
+| 049 | Pour le réseau et la validation, le script Perl les attribuera également sous peu | - 
+
+
+| 050 | Échec de la génération de la clé SSH | Redémarrez la machine virtuelle principale (VM). 
+
+
+| 053 | Échec de l'installation de RKE2 | Exécutez ce qui suit et redémarrez la machine virtuelle principale ou redéployez : sudo rke2-killall.sh (toutes les machines virtuelles) sudo rke2-uninstall.sh (toutes les machines virtuelles). 
+
+
+| 054 | Échec de la configuration de kubeconfig | Redéployer 
+
+
+| 055 | Échec du déploiement du registre | Si le pod de registre est présent, attendez que le pod soit prêt, puis redémarrez la machine virtuelle principale ou redéployez-la. 
+
+
+| 059 | Le déploiement de KubeVip a échoué | Assurez-vous que l'adresse IP virtuelle pour le plan de contrôle Kubernetes et l'adresse IP des outils ONTAP fournies lors du déploiement appartiennent au même VLAN et sont des adresses IP libres.  Redémarrez si tous les points précédents sont corrects.  Sinon, redéployez-vous. 
+
+
+| 060 | Le déploiement de l'opérateur a échoué | Redémarrage 
+
+
+| 061 | Le déploiement des services a échoué | Effectuez le débogage Kubernetes de base comme obtenir des pods, obtenir des rs, obtenir des svc, etc. dans l'espace de noms ntv-system pour plus de détails et les journaux d'erreurs dans /var/log/ansible-perl-errors.log et /var/log/ansible-run.log et redéployez. 
+
+
+| 062 | Le déploiement des services des outils ONTAP a échoué | Reportez-vous aux journaux d'erreurs dans /var/log/ansible-perl-errors.log pour plus de détails et redéployer. 
+
+
+| 065 | L'URL de la page Swagger n'est pas accessible | Redéployer 
+
+
+| 066 | Les étapes de déploiement post-certificat de passerelle ont échoué | Procédez comme suit pour récupérer/terminer la mise à niveau : * Activez le shell de diagnostic.  * Exécutez la commande « sudo perl /home/maint/scripts/post-deploy-upgrade.pl --postDeploy ».  * Vérifiez les journaux dans /var/log/post-deploy-upgrade.log. 
+
+
+| 088 | La configuration de la rotation du journal pour journald a échoué | Vérifiez les paramètres réseau de la machine virtuelle compatibles avec l’hôte sur lequel la machine virtuelle est hébergée.  Vous pouvez essayer de migrer vers un autre hôte et de redémarrer la VM. 
+
+
+| 089 | La modification de la propriété du fichier de configuration de rotation du journal récapitulatif a échoué | Redémarrez la machine virtuelle principale. 
+
+
+| 096 | Installer un provisionneur de stockage dynamique | - 
+
+
+| 108 | Échec du script d'amorçage | - 
+|===
+|===
+
+
+| *Code d'erreur de redémarrage* | *Flux de travail* | *Résolution* 
+
+
+| 067 | L'attente du serveur rke2 a expiré. | - 
+
+
+| 101 | Échec de la réinitialisation du mot de passe utilisateur Maint/Console. | - 
+
+
+| 102 | Échec de la suppression du fichier de mot de passe lors de la réinitialisation du mot de passe utilisateur Maint/Console. | - 
+
+
+| 103 | Échec de la mise à jour du nouveau mot de passe utilisateur Maint/Console dans le coffre-fort. | - 
+
+
+| 088 | La configuration de la rotation du journal pour journald a échoué. | Vérifiez les paramètres réseau de la machine virtuelle compatibles avec l’hôte sur lequel la machine virtuelle est hébergée.  Vous pouvez essayer de migrer vers un autre hôte et de redémarrer la VM. 
+
+
+| 089 | La modification de la propriété du fichier de configuration de rotation du journal récapitulatif a échoué. | Redémarrez la VM. 
+|===

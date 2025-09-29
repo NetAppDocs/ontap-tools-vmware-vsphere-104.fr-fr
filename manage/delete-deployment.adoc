@@ -1,0 +1,31 @@
+---
+permalink: manage/delete-deployment.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Après avoir supprimé les ONTAP tools for VMware vSphere , vous devez nettoyer les FlexVolumes créés lors du déploiement. Si vous avez utilisé un cluster ONTAP dédié pour les déploiements, vous devez nettoyer les FlexVolumes, car le déploiement crée de nombreux FlexVolumes inutilisés, ce qui entraîne une baisse des performances. 
+---
+= Supprimer les volumes FlexVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous utilisez un cluster ONTAP dédié pour les outils ONTAP pour le déploiement VMware, cela crée de nombreux volumes FlexVol inutilisés.  Après avoir supprimé les ONTAP tools for VMware vSphere, vous devez supprimer les volumes FlexVol pour éviter d’éventuels impacts sur les performances.
+
+.Étapes
+. Déterminez les ONTAP tools for VMware vSphere à partir du premier nœud de machine virtuelle.
++
+_cat /opt/netapp/meta/ansible_vars.yaml | grep -i protocole_
+
++
+S’il s’agit d’un déploiement iSCSI, vous devez également supprimer les igroups.
+
+. Obtenez la liste des volumes FlexVol .
++
+_kubectl décrit les volumes persistants | grep internalName | awk -F'=' '{print $2}'_
+
+. Supprimez les machines virtuelles du vCenter Server. Se référer à https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/adding-and-removing-virtual-machinesvsphere-vm-admin.html#GUID-376174FE-F936-4BE4-B8C2-48EED42F110B-en["Supprimer et réenregistrer les machines virtuelles et les modèles de machines virtuelles"] .
+. Supprimer les volumes FlexVol . Se référer à https://docs.netapp.com/us-en/ontap/volumes/delete-flexvol-task.html["Supprimer un FlexVol volume"] .  Dans la commande CLI pour supprimer un volume, indiquez le nom exact des volumes FlexVol .
+. Supprimez les groupes SAN du système de stockage ONTAP en cas de déploiement iSCSI. Se référer à https://docs.netapp.com/us-en/ontap/san-admin/manage-san-initiators-task.html["Afficher et gérer les initiateurs et les groupes SAN"] .
+

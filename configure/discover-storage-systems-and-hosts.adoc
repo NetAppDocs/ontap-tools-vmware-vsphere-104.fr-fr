@@ -1,0 +1,42 @@
+---
+permalink: configure/discover-storage-systems-and-hosts.html 
+sidebar: sidebar 
+keywords:  
+summary: Lorsque vous exécutez pour la première fois les ONTAP tools for VMware vSphere dans un client vSphere, les ONTAP tools for VMware vSphere découvrent les hôtes ESXi, leurs LUN et exportations NFS, ainsi que les systèmes de stockage NetApp qui possèdent ces LUN et exportations. 
+---
+= Découvrez les systèmes de stockage et les hôtes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous exécutez pour la première fois les ONTAP tools for VMware vSphere dans un client vSphere, les outils ONTAP découvrent les hôtes ESXi, leurs LUN et exportations NFS, ainsi que les systèmes de stockage NetApp qui possèdent ces LUN et exportations.
+
+.Avant de commencer
+* Tous les hôtes ESXi doivent être sous tension et connectés.
+* Toutes les machines virtuelles de stockage (SVM) à découvrir doivent être en cours d'exécution et chaque nœud de cluster doit avoir au moins un LIF de données configuré pour le protocole de stockage utilisé (NFS ou iSCSI).
+
+
+*À propos de cette tâche*
+
+Vous pouvez découvrir de nouveaux systèmes de stockage ou mettre à jour les informations sur les systèmes de stockage existants pour obtenir les dernières informations de capacité et de configuration à tout moment.  Vous pouvez également modifier les informations d’identification que les ONTAP tools for VMware vSphere utilisent pour se connecter aux systèmes de stockage.
+
+Lors de la découverte des systèmes de stockage, les ONTAP tools for VMware vSphere collectent des informations auprès des hôtes ESXi gérés par l'instance vCenter Server.
+
+.Étapes
+. Depuis la page d’accueil de vSphere Client, sélectionnez *Hôtes et clusters*.
+. Cliquez avec le bouton droit sur le centre de données requis et sélectionnez * Outils NetApp ONTAP * > * Mettre à jour les données de l'hôte * .
++
+Dans la boîte de dialogue *Confirmer*, confirmez votre choix.
+
+. Sélectionnez les contrôleurs de stockage découverts qui ont le statut `Authentication Failure` et sélectionnez *Actions* > *Modifier*.
+. Remplissez les informations requises dans la boîte de dialogue *Modifier le système de stockage*.
+. Répétez les étapes 4 et 5 pour tous les contrôleurs de stockage avec `Authentication Failure` statut.
+
+
+Une fois le processus de découverte terminé, effectuez les actions suivantes :
+
+* Utilisez les ONTAP tools for VMware vSphere pour configurer les paramètres d’hôte ESXi pour les hôtes qui affichent l’icône d’alerte dans la colonne des paramètres de l’adaptateur, la colonne des paramètres MPIO ou la colonne des paramètres NFS.
+* Fournissez les informations d’identification du système de stockage.
+

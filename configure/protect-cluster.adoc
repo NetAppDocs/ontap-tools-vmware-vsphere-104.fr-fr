@@ -1,0 +1,51 @@
+---
+permalink: configure/protect-cluster.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: Les ONTAP tools for VMware vSphere gèrent la protection des clusters hôtes. 
+---
+= Protéger à l'aide de la protection du cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les ONTAP tools for VMware vSphere gèrent la protection des clusters hôtes.  Tous les magasins de données appartenant au SVM sélectionné et montés sur un ou plusieurs hôtes du cluster sont protégés sous un cluster hôte.
+
+.Avant de commencer
+Assurez-vous que les conditions préalables suivantes sont remplies :
+
+* Le cluster hôte dispose de banques de données provenant uniquement d'une seule SVM.
+* Le magasin de données monté sur le cluster hôte ne doit pas être monté sur un hôte extérieur au cluster.
+* Tous les magasins de données montés sur le cluster hôte doivent être des magasins de données VMFS avec le protocole iSCSI/FC. Les magasins de données vVols, NFS ou VMFS avec les protocoles NVMe/FC et NVMe/TCP ne sont pas pris en charge.
+* Les banques de données formant FlexVol/LUN montées sur le cluster hôte ne doivent pas faire partie d'un groupe de cohérence (CG) existant.
+* Les banques de données formant FlexVol/LUN montées sur le cluster hôte ne doivent pas faire partie d'une relation SnapMirror existante.
+* Le cluster hôte doit avoir au moins une banque de données.
+
+
+.Étapes
+. Connectez-vous au client vSphere.
+. Cliquez avec le bouton droit sur un cluster hôte et sélectionnez * Outils NetApp ONTAP * > * Protéger le cluster *.
+. Dans la fenêtre de protection du cluster, le type de banque de données et les détails de la machine virtuelle (VM) de stockage source sont renseignés automatiquement. Sélectionnez le lien des magasins de données pour afficher les magasins de données protégés.
+. Saisissez le *nom du groupe de cohérence*.
+. Sélectionnez *Ajouter une relation*.
+. Dans la fenêtre *Ajouter une relation SnapMirror *, sélectionnez la *VM de stockage cible* et le type de *Stratégie*.
++
+Le type de politique peut être asynchrone ou automatiséFailOverDuplex.
+
++
+Lorsque vous ajoutez la relation SnapMirror en tant que stratégie de type AutomatedFailOverDuplex, vous devez ajouter la machine virtuelle de stockage cible en tant que backend de stockage au même vCenter où les ONTAP tools for VMware vSphere sont déployés.
+
++
+Dans le type de stratégie AutomatedFailOverDuplex, il existe des configurations d’hôte uniformes et non uniformes. Lorsque vous sélectionnez le bouton bascule *configuration uniforme de l'hôte*, la configuration du groupe d'initiateurs de l'hôte est implicitement répliquée sur le site cible. Pour plus de détails, reportez-vous àlink:../concepts/ontap-tools-concepts-terms.html["Concepts et termes clés"] .
+
+. Si vous choisissez une configuration d'hôte non uniforme, sélectionnez l'accès à l'hôte (source/cible) pour chaque hôte à l'intérieur de ce cluster.
+. Sélectionnez *Ajouter*.
+. Dans la fenêtre *Protéger le cluster*, vous ne pouvez pas modifier le cluster protégé pendant l'opération de création.  Vous pouvez supprimer et ajouter à nouveau la protection.  Pendant l'opération de modification de la protection du cluster d'hôtes, l'option de modification est disponible. Vous pouvez modifier ou supprimer les relations à l’aide des options du menu à points de suspension.
+. Sélectionnez le bouton *Protéger*.
++
+Une tâche vCenter est créée avec les détails de l’ID de tâche et sa progression est affichée dans le panneau des tâches récentes.  Il s'agit d'une tâche asynchrone ; l'interface utilisateur affiche uniquement l'état de soumission de la demande et n'attend pas que la tâche soit terminée.
+
+. Pour afficher les clusters d'hôtes protégés, accédez à * Outils NetApp ONTAP * > *Protection* > *Relations entre les clusters d'hôtes*.
+

@@ -1,0 +1,21 @@
+---
+permalink: manage/manage-storage-threshold.html 
+sidebar: sidebar 
+keywords:  
+summary: Vous pouvez définir le seuil pour recevoir des notifications dans vCenter Server lorsque le volume et la capacité globale atteignent certains niveaux. 
+---
+= Gérer les seuils de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez définir le seuil pour recevoir des notifications dans vCenter Server lorsque le volume et la capacité globale atteignent certains niveaux.
+
+.Mesures:
+. Connectez-vous au client vSphere.
+. Dans la page des raccourcis, sélectionnez * Outils NetApp ONTAP * sous la section plug-ins.
+. Dans le volet gauche des outils ONTAP , accédez à *Paramètres* > *Paramètres de seuil* > *Modifier*.
+. Dans la fenêtre *Modifier le seuil*, indiquez les valeurs souhaitées dans les champs *Presque plein* et *Plein* et sélectionnez *Enregistrer*.  Vous pouvez réinitialiser les chiffres aux valeurs recommandées, soit 80 pour presque plein et 90 pour plein.
+

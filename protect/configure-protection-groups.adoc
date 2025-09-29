@@ -1,0 +1,72 @@
+---
+permalink: protect/configure-protection-groups.html 
+sidebar: sidebar 
+keywords:  
+summary: Vous devez créer des groupes de protection pour protéger un groupe de machines virtuelles sur le site protégé. 
+---
+= Configurer les sites protégés et de récupération
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez créer des groupes de protection pour protéger un groupe de machines virtuelles sur le site protégé.
+
+Lorsque vous ajoutez une nouvelle banque de données, vous pouvez l'inclure dans le groupe de banques de données existant ou en ajouter une nouvelle et créer un volume ou un groupe de cohérence à protéger. Après avoir ajouté une nouvelle banque de données à un groupe de cohérence ou à un volume protégé, mettez à jour SnapMirror et effectuez la découverte du stockage sur les sites protégé et de récupération. Vous pouvez exécuter la découverte manuellement ou selon un calendrier pour garantir la détection et la protection de la nouvelle banque de données.
+
+
+
+== Sites de protection et de récupération des paires
+
+Vous devez associer les sites protégés et de récupération créés à l'aide de votre client vSphere pour permettre à l'adaptateur de réplication de stockage (SRA) de découvrir les systèmes de stockage.
+
+
+NOTE: L'adaptateur de réplication de stockage (SRA) prend en charge la distribution avec une relation de synchronisation de type Duplex de basculement automatisé et une relation asynchrone SnapMirror sur le groupe de cohérence.  Cependant, la distribution en éventail avec deux SnapMirror asynchrones sur un groupe de cohérence ou la distribution en éventail avec deux SnapMirrors sur un volume n'est pas prise en charge.
+
+.Avant de commencer
+* Vous devez avoir VMware Live Site Recovery installé sur les sites protégés et de récupération.
+* Vous devez avoir SRA installé sur les sites protégés et de récupération.
+
+
+.Étapes
+. Double-cliquez sur *Site Recovery* sur la page d’accueil de vSphere Client et sélectionnez *Sites*.
+. Sélectionnez *Objets* > *Actions* > *Sites appariés*.
+. Dans la boîte de dialogue *Pair Site Recovery Manager Servers*, entrez l'adresse du Platform Services Controller du site protégé, puis sélectionnez *Suivant*.
+. Dans la section Sélectionner vCenter Server, procédez comme suit :
++
+.. Vérifiez que le serveur vCenter du site protégé apparaît comme un candidat correspondant à associer.
+.. Saisissez les informations d’identification administratives SSO, puis sélectionnez *Terminer*.
+
+
+. Si vous y êtes invité, sélectionnez *Oui* pour accepter les certificats de sécurité.
+
+
+.Résultat
+Les sites protégés et de récupération apparaîtront dans la boîte de dialogue Objets.
+
+
+
+== Configurer les groupes de protection
+
+.Avant de commencer
+Vous devez vous assurer que les sites source et cible sont configurés pour les éléments suivants :
+
+* Même version de VMware Live Site Recovery installée
+* Machines virtuelles
+* Sites protégés et de récupération appariés
+* Les magasins de données source et de destination doivent être montés sur des sites respectifs
+
+
+.Étapes
+. Connectez-vous à vCenter Server et sélectionnez *Site Recovery* > *Groupes de protection*.
+. Dans le volet *Groupes de protection*, sélectionnez *Nouveau*.
+. Spécifiez un nom et une description pour le groupe de protection, la direction et sélectionnez *Suivant*.
+. Dans le champ *Type*, sélectionnez l'option *Type* comme groupes de banques de données (réplication basée sur une baie) pour les banques de données NFS et VMFS. Le domaine d'erreur ne comprend que les SVM avec réplication activée. Les SVM pour lesquelles seul le peering est implémenté et qui ne présentent aucun problème sont affichées.
+. Dans l'onglet Groupes de réplication, sélectionnez la paire de baies activée ou les groupes de réplication contenant la machine virtuelle que vous avez configurée, puis sélectionnez *Suivant*.
++
+Toutes les machines virtuelles du groupe de réplication sont ajoutées au groupe de protection.
+
+. Vous pouvez sélectionner le plan de récupération existant ou en créer un nouveau en sélectionnant *Ajouter au nouveau plan de récupération*.
+. Dans l’onglet Prêt à terminer, vérifiez les détails du groupe de protection que vous avez créé, puis sélectionnez *Terminer*.
+

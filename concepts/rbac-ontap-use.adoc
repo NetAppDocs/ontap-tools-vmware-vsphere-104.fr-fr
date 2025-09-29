@@ -1,0 +1,92 @@
+---
+permalink: concepts/rbac-ontap-use.html 
+sidebar: sidebar 
+keywords: ontap rbac, use ontap rbac 
+summary: Il existe plusieurs aspects des ONTAP tools for VMware vSphere 10 avec ONTAP que vous devez prendre en compte avant de l’utiliser dans un environnement de production. 
+---
+= Utiliser ONTAP RBAC avec les ONTAP tools for VMware vSphere 10
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il existe plusieurs aspects des ONTAP tools for VMware vSphere 10 avec ONTAP que vous devez prendre en compte avant de l’utiliser dans un environnement de production.
+
+
+
+== Aperçu du processus de configuration
+
+Les ONTAP tools for VMware vSphere 10 incluent la prise en charge de la création d’un utilisateur ONTAP avec un rôle personnalisé. Les définitions sont regroupées dans un fichier JSON que vous pouvez télécharger sur le cluster ONTAP . Vous pouvez créer l'utilisateur et personnaliser le rôle en fonction de votre environnement et de vos besoins de sécurité.
+
+Les principales étapes de configuration sont décrites à un niveau élevé ci-dessous.  Se référer àlink:../configure/configure-user-role-and-privileges.html["Configurer les rôles et privilèges des utilisateurs ONTAP"] pour plus de détails.
+
+.1. Préparer
+Vous devez disposer des informations d’identification administratives pour le gestionnaire d’outils ONTAP et le cluster ONTAP .
+
+.2. Télécharger le fichier de définition JSON
+Après vous être connecté à l'interface utilisateur du gestionnaire d'outils ONTAP , vous pouvez télécharger le fichier JSON contenant les définitions RBAC.
+
+.3. Créer un utilisateur ONTAP avec un rôle
+Après vous être connecté au Gestionnaire système, vous pouvez créer l'utilisateur et le rôle :
+
+. Sélectionnez *Cluster* sur la gauche puis *Paramètres*.
+. Faites défiler jusqu'à *Utilisateurs et rôles* et cliquez sur `-->` .
+. Sélectionnez *Ajouter* sous *Utilisateurs* et sélectionnez *Produits de virtualisation*.
+. Sélectionnez le fichier JSON sur votre poste de travail local et téléchargez-le.
+
+
+.4. Configurer le rôle
+Dans le cadre de la définition du rôle, vous devez prendre plusieurs décisions administratives.  Voir<<Configurer le rôle à l'aide du Gestionnaire système>> pour plus de détails.
+
+
+
+== Configurer le rôle à l'aide du Gestionnaire système
+
+Une fois que vous avez commencé à créer un nouvel utilisateur et un nouveau rôle avec System Manager et que vous avez téléchargé le fichier JSON, vous pouvez personnaliser le rôle en fonction de votre environnement et de vos besoins.
+
+
+
+=== Configuration des utilisateurs et des rôles principaux
+
+Les définitions RBAC sont regroupées sous forme de plusieurs fonctionnalités de produit, notamment des combinaisons de VSC, VASA Provider et SRA.  Vous devez sélectionner l’environnement ou les environnements dans lesquels vous avez besoin de la prise en charge RBAC.  Par exemple, si vous souhaitez que les rôles prennent en charge la fonctionnalité de plug-in à distance, sélectionnez VSC.  Vous devez également choisir le nom d'utilisateur et le mot de passe associé.
+
+
+
+=== Privileges
+
+Les privilèges de rôle sont organisés en quatre ensembles en fonction du niveau d'accès nécessaire au stockage ONTAP .  Les privilèges sur lesquels sont basés les rôles incluent :
+
+* Découverte
++
+Ce rôle vous permet d'ajouter des systèmes de stockage.
+
+* Créer un espace de stockage
++
+Ce rôle vous permet de créer du stockage.  Il inclut également tous les privilèges associés au rôle de découverte.
+
+* Modifier le stockage
++
+Ce rôle vous permet de modifier le stockage.  Il inclut également tous les privilèges associés à la découverte et à la création de rôles de stockage.
+
+* Détruire le stockage
++
+Ce rôle vous permet de détruire le stockage.  Il inclut également tous les privilèges associés à la découverte, à la création de stockage et à la modification des rôles de stockage.
+
+
+
+
+
+=== Générer l'utilisateur avec un rôle
+
+Après avoir sélectionné les options de configuration pour votre environnement, cliquez sur *Ajouter* et ONTAP crée l'utilisateur et le rôle.  Le nom du rôle généré est une concaténation des valeurs suivantes :
+
+* Valeur de préfixe constante définie dans le fichier JSON (par exemple « OTV_10 »)
+* Capacité du produit que vous avez sélectionnée
+* Liste des ensembles de privilèges.
+
+
+.Exemple
+`OTV_10_VSC_Discovery_Create`
+
+Le nouvel utilisateur sera ajouté à la liste sur la page « Utilisateurs et rôles ».  Notez que les méthodes de connexion utilisateur HTTP et ONTAPI sont prises en charge.

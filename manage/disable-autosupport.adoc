@@ -1,0 +1,24 @@
+---
+permalink: manage/disable-autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: Lors de la première configuration de votre système de stockage, AutoSupport est activé par défaut. Il envoie des messages au support technique 24 heures après son activation. 
+---
+= Désactiver AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors de la première configuration de votre système de stockage, AutoSupport est activé par défaut. Il envoie des messages au support technique 24 heures après son activation.  Lorsque vous désactivez AutoSupport, vous ne bénéficierez plus d'une assistance et d'une surveillance proactives.
+
+
+NOTE: Il est recommandé de garder AutoSupport activé.  Cela permet d’accélérer la détection et la résolution des problèmes.  Le système collecte les informations AutoSupport et les stocke localement, même lorsqu'il est désactivé.  Cependant, il n'envoie le rapport à aucun réseau.
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez l'option *Paramètres* > *Télémétrie* > *Modifier*.
+. Désélectionnez l'option * AutoSupport* et enregistrez les modifications.
+

@@ -1,0 +1,16 @@
+---
+section: deploy
+title: Déployer les ONTAP tools for VMware vSphere
+entries:
+- title: Démarrage rapide des ONTAP tools for VMware vSphere
+  url: "/deploy/quick-start.html"
+- title: Workflow de déploiement haute disponibilité (HA)
+  url: "/deploy/ha-workflow.html"
+- title: Exigences et limites de configuration des outils ONTAP
+  url: "/deploy/prerequisites.html"
+- title: Avant de commencer
+  url: "/deploy/pre-deploy-checks.html"
+- title: Déployer les ONTAP tools for VMware vSphere
+  url: "/deploy/ontap-tools-deployment.html"
+- title: Codes d'erreur de déploiement
+  url: "/deploy/deployment-error-codes.html"

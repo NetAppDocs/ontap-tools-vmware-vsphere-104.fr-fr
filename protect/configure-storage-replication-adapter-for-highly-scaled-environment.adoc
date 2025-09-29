@@ -1,0 +1,68 @@
+---
+permalink: protect/configure-storage-replication-adapter-for-highly-scaled-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous devez configurer les intervalles de délai d"expiration de stockage conformément aux paramètres recommandés pour l"adaptateur de réplication de stockage (SRA) afin de fonctionner de manière optimale dans des environnements à grande échelle.' 
+---
+= Configurer SRA pour les environnements à grande échelle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez configurer les intervalles de délai d'expiration de stockage conformément aux paramètres recommandés pour l'adaptateur de réplication de stockage (SRA) afin de fonctionner de manière optimale dans des environnements à grande échelle.
+
+
+
+== Paramètres du fournisseur de stockage
+
+Vous devez définir les valeurs de délai d'expiration suivantes sur VMware Live Site Recovery pour un environnement évolutif :
+
+|===
+
+
+| *Paramètres avancés* | *Valeurs de délai d'attente* 
+
+
+ a| 
+`StorageProvider.resignatureTimeout`
+ a| 
+Augmentez la valeur du paramètre de 900 secondes à 12 000 secondes.
+
+
+
+ a| 
+`storageProvider.hostRescanDelaySec`
+ a| 
+60
+
+
+
+ a| 
+`storageProvider.hostRescanRepeatCnt`
+ a| 
+20
+
+
+
+ a| 
+`storageProvider.hostRescanTimeoutSec`
+ a| 
+Définissez une valeur élevée (par exemple : 99999)
+
+|===
+Vous devez également activer le `StorageProvider.autoResignatureMode` option.
+
+Se référer à https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["Modifier les paramètres du fournisseur de stockage"] pour plus d'informations sur la modification des paramètres du fournisseur de stockage.
+
+
+
+== Paramètres de stockage
+
+Lorsque vous atteignez un délai d'attente, augmentez les valeurs de `storage.commandTimeout` et `storage.maxConcurrentCommandCnt` à une valeur plus élevée.
+
+
+NOTE: L'intervalle de délai d'expiration spécifié est la valeur maximale. Vous n’avez pas besoin d’attendre que le délai d’expiration maximal soit atteint. La plupart des commandes se terminent dans l'intervalle de délai d'expiration maximal défini.
+
+Se référer à https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["Modifier les paramètres de stockage"] pour modifier les paramètres du fournisseur SAN.

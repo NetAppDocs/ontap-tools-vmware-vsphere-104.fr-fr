@@ -1,0 +1,41 @@
+---
+permalink: deploy/ha-workflow.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: La prise en main des ONTAP tools for VMware vSphere comprend quelques étapes. 
+---
+= Workflow de déploiement haute disponibilité (HA)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous utilisez des banques de données vVols , vous devez étendre le déploiement initial des outils ONTAP à une configuration haute disponibilité (HA) et activer les services du fournisseur VASA.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Un"]Augmenter le déploiement
+[role="quick-margin-para"]
+Vous pouvez étendre la configuration des ONTAP tools for VMware vSphere afin d'augmenter le nombre de nœuds dans le déploiement et de modifier la configuration vers une configuration HA.
+
+[role="quick-margin-list"]
+* link:../manage/edit-appliance-settings.html["Modifier les ONTAP tools for VMware vSphere"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]Activer les services
+[role="quick-margin-para"]
+Pour configurer les banques de données vVols , vous devez activer le service VASA Provider. Enregistrez le fournisseur VASA auprès de vCenter et assurez-vous que vos politiques de stockage répondent aux exigences HA, y compris les configurations de réseau et de stockage appropriées.
+
+[role="quick-margin-para"]
+Activez les services SRA pour utiliser les outils ONTAP Storage Replication Adapter (SRA) pour VMware Site Recovery Manager (SRM) ou VMware Live Site Recovery (VLSR).
+
+[role="quick-margin-list"]
+* link:../manage/enable-services.html["Activer les services VASA Provider et SRA"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]Mettre à niveau les certificats
+[role="quick-margin-para"]
+Si vous utilisez des banques de données vVol avec plusieurs instances de vCenter Server, mettez à niveau le certificat auto-signé vers un certificat signé par une autorité de certification (CA).
+
+[role="quick-margin-list"]
+* link:../manage/certificate-manage.html["Gérer les certificats"]
+

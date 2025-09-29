@@ -1,0 +1,34 @@
+---
+permalink: manage/mount-datastores-on-host.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Le montage d"un magasin de données fournit un accès au stockage à des hôtes supplémentaires.  Vous pouvez monter la banque de données sur les hôtes supplémentaires après avoir ajouté les hôtes à votre environnement VMware.' 
+---
+= Monter des banques de données NFS et VMFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le montage d'un magasin de données fournit un accès au stockage à des hôtes supplémentaires.  Vous pouvez monter la banque de données sur les hôtes supplémentaires après avoir ajouté les hôtes à votre environnement VMware.
+
+.À propos de cette tâche
+* Certaines actions de clic droit sont désactivées ou indisponibles selon la version du client vSphere et le type de banque de données sélectionné.
++
+** Si vous utilisez le client vSphere 8.0 ou des versions ultérieures, certaines des options de clic droit sont masquées.
+** Des versions vSphere 7.0U3 à vSphere 8.0, même si les options apparaissent, l'action sera désactivée.
+
+
+* L'option de montage de la banque de données est désactivée lorsque le cluster hôte est protégé par des configurations uniformes.
+
+
+.Étapes
+. Depuis la page d’accueil de vSphere Client, sélectionnez *Hôtes et clusters*.
+. Dans le volet de navigation de gauche, sélectionnez les centres de données contenant les hôtes.
+. Pour monter des magasins de données NFS/VMFS sur un hôte ou un cluster d'hôtes, cliquez avec le bouton droit de la souris et sélectionnez * Outils NetApp ONTAP * > * Monter les magasins de données *.
+. Sélectionnez les banques de données que vous souhaitez monter et sélectionnez *Monter*.
+
+
+.Quelle est la prochaine étape ?
+Vous pouvez suivre la progression dans le panneau des tâches récentes.

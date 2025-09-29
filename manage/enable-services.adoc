@@ -1,0 +1,31 @@
+---
+permalink: manage/enable-services.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez modifier le mot de passe administrateur à l"aide du gestionnaire d"outils ONTAP pour activer des services tels que VASA Provider, l"importation de la configuration vVols et la reprise après sinistre (SRA) à l"aide du gestionnaire d"outils ONTAP .' 
+---
+= Activer les ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier le mot de passe administrateur à l'aide du gestionnaire d'outils ONTAP pour activer des services tels que VASA Provider, l'importation de la configuration vVols et la reprise après sinistre (SRA) à l'aide du gestionnaire d'outils ONTAP .
+
+.Étapes
+. Lancez le gestionnaire d’outils ONTAP à partir d’un navigateur Web : `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Connectez-vous avec les informations d’identification d’administrateur des ONTAP tools for VMware vSphere que vous avez fournies lors du déploiement.
+. Sélectionnez *Modifier les paramètres de l'appareil* dans la section Aperçu.
+. Dans la section *Services*, vous pouvez activer des services optionnels tels que VASA Provider, l'importation de la configuration vVols et la reprise après sinistre (SRA) selon vos besoins.
++
+Lorsque vous activez les services pour la première fois, vous devez créer les informations d'identification du fournisseur VASA et SRA.  Ils sont utilisés pour enregistrer ou activer les services VASA Provider et SRA sur vCenter Server. Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des traits de soulignement.  La longueur du mot de passe doit être comprise entre 8 et 256 caractères.
+
++
+
+NOTE: Avant de désactiver des services facultatifs, assurez-vous que les serveurs vCenter gérés par les outils ONTAP ne les utilisent pas.
+
++
+L'option *Autoriser l'importation de la configuration vVols * s'affiche uniquement lorsque le service VASA Provider est activé. Cette option permet la migration des données vVols des outils ONTAP 9.xx vers les outils ONTAP 10.4.
+
+

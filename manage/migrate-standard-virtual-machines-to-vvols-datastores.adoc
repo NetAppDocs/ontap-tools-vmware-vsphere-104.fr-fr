@@ -1,0 +1,28 @@
+---
+permalink: manage/migrate-standard-virtual-machines-to-vvols-datastores.html 
+sidebar: sidebar 
+keywords: Migrate NFS and VMFS virtual machines 
+summary: 'Vous pouvez migrer des machines virtuelles depuis des banques de données NFS et VMFS vers des banques de données Virtual Volumes (vVols) pour tirer parti de la gestion des machines virtuelles basée sur des stratégies et d"autres fonctionnalités vVols . Les banques de données vVols vous permettent de répondre à des exigences de charge de travail accrues.' 
+---
+= Migrer des machines virtuelles avec des banques de données NFS et VMFS vers des banques de données vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez migrer des machines virtuelles depuis des banques de données NFS et VMFS vers des banques de données Virtual Volumes (vVols) pour tirer parti de la gestion des machines virtuelles basée sur des stratégies et d'autres fonctionnalités vVols . Les banques de données vVols vous permettent de répondre à des exigences de charge de travail accrues.
+
+.Avant de commencer
+Assurez-vous que VASA Provider n’est en cours d’exécution sur aucune des machines virtuelles que vous prévoyez de migrer.  Si vous migrez une machine virtuelle exécutant VASA Provider vers une banque de données vVols , vous ne pouvez effectuer aucune opération de gestion, y compris la mise sous tension des machines virtuelles qui se trouvent sur les banques de données vVols .
+
+*À propos de cette tâche*
+
+Lorsque vous migrez d'une banque de données NFS et VMFS vers une banque de données vVols , vCenter Server utilise les déchargements vStorage API for Array Integration (VAAI) lors du déplacement de données à partir de banques de données VMFS, mais pas à partir d'un fichier NFS VMDK.  Les déchargements VAAI réduisent normalement la charge sur l'hôte.
+
+.Étapes
+. Cliquez avec le bouton droit sur la machine virtuelle que vous souhaitez migrer et sélectionnez *Migrer*.
+. Sélectionnez *Modifier le stockage uniquement*, puis sélectionnez *Suivant*.
+. Sélectionnez un format de disque virtuel, une stratégie de stockage de machine virtuelle et une banque de données vVol qui correspondent aux fonctionnalités de la banque de données que vous migrez.
+. Vérifiez les paramètres et sélectionnez *Terminer*.
+
