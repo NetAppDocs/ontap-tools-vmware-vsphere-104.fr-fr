@@ -20,7 +20,7 @@ NOTE:
 
 
 .Avant de commencer
-Pour une mise à niveau non HA, mettez hors tension la machine virtuelle des outils ONTAP et pour une mise à niveau HA, mettez hors tension le premier nœud avant d'apporter les modifications suivantes aux paramètres de la machine virtuelle (VM).
+Pour une mise à niveau non HA, mettez hors tension la machine virtuelle des outils ONTAP et pour une mise à niveau HA, mettez hors tension le nœud de gestion des outils ONTAP avant d'apporter les modifications suivantes aux paramètres de la machine virtuelle (VM).
 
 Si vous effectuez une mise à niveau depuis les ONTAP tools for VMware vSphere 10.2 ou 10.3, vous devez suivre les étapes suivantes avant de procéder à la mise à niveau : * Ajouter un disque dur supplémentaire de 100 Go à chaque nœud, car les données de service sont stockées localement sur la machine virtuelle. * Modifier le processeur et la mémoire de la machine virtuelle hors tension en fonction de votre déploiement. Activer le plug-in à chaud pour le processeur et la RAM.
 
@@ -123,7 +123,7 @@ Après la mise à niveau vers les ONTAP tools for VMware vSphere 10.4, vous pouv
 * Désactiver les services depuis l'interface utilisateur du gestionnaire
 * Passer d'une configuration non HA à une configuration HA
 * Faites évoluer une petite configuration non HA vers une configuration moyenne non HA ou vers une configuration moyenne ou grande HA.
-* En cas de mise à niveau non HA, redémarrez la machine virtuelle des outils ONTAP pour refléter les modifications.  En cas de mise à niveau HA, redémarrez le premier nœud pour refléter les modifications sur le nœud.
+* En cas de mise à niveau non HA, redémarrez la machine virtuelle des outils ONTAP pour refléter les modifications. En cas de mise à niveau HA, redémarrez le nœud de gestion des outils ONTAP pour refléter les modifications sur le nœud.
 
 
 .Quelle est la prochaine étape

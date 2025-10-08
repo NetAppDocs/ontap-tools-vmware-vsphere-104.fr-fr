@@ -60,13 +60,13 @@ Utilisez la feuille de calcul suivante pour collecter les informations requises 
 | Exigence | Votre valeur 
 
 
-| Adresse IP pour l'application des outils ONTAP . Il s'agit de l'adresse IP permettant d'accéder à l'interface Web des outils ONTAP |  
+| Adresse IP pour l'application des outils ONTAP . Il s'agit de l'adresse IP permettant d'accéder à l'interface Web des outils ONTAP (équilibreur de charge) |  
 
 
-| Adresse IP virtuelle des outils ONTAP pour la communication interne. Cette adresse IP est utilisée pour la communication interne dans une configuration avec plusieurs instances d'outils ONTAP . Cette adresse IP ne doit pas être la même que l’adresse IP de l’application des outils ONTAP . |  
+| Adresse IP virtuelle des outils ONTAP pour la communication interne. Cette adresse IP est utilisée pour la communication interne dans une configuration avec plusieurs instances d'outils ONTAP . Cette adresse IP ne doit pas être la même que l'adresse IP de l'application des outils ONTAP . (Le plan de contrôle Kubernetes) |  
 
 
-| Nom d'hôte DNS pour le premier nœud |  
+| Nom d'hôte DNS pour le nœud de gestion des outils ONTAP |  
 
 
 | Serveur DNS principal |  
@@ -78,7 +78,7 @@ Utilisez la feuille de calcul suivante pour collecter les informations requises 
 | Domaine de recherche DNS |  
 
 
-| Adresse IPv4 pour le premier nœud. Il s'agit d'une adresse IPv4 unique pour l'interface de gestion des nœuds sur le réseau de gestion. |  
+| Adresse IPv4 pour le nœud de gestion des outils ONTAP . Il s'agit d'une adresse IPv4 unique pour l'interface de gestion des nœuds sur le réseau de gestion. |  
 
 
 | Masque de sous-réseau pour l'adresse IPv4 |  

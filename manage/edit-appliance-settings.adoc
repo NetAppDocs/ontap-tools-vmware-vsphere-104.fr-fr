@@ -48,7 +48,7 @@ NOTE: Une fois la configuration HA activée, vous ne pouvez pas revenir à une c
 . Dans la section *Paramètres HA* de la fenêtre *Modifier les paramètres de l'appliance*, vous pouvez saisir les détails des nœuds 2 et 3.  Les ONTAP tools for VMware vSphere prennent en charge trois nœuds dans la configuration HA.
 +
 
-NOTE: La plupart des options de saisie sont pré-remplies avec les détails du réseau du nœud 1 pour faciliter le flux de travail. Cependant, vous pouvez modifier les données d'entrée avant d'accéder à la page finale de l'assistant. Vous pouvez saisir les détails de l'adresse IPv6 pour les deux autres nœuds uniquement lorsque l'adresse IPv6 est activée sur le premier nœud.
+NOTE: La plupart des options de saisie sont pré-remplies avec les détails du réseau du nœud 1 pour faciliter le flux de travail. Cependant, vous pouvez modifier les données d'entrée avant d'accéder à la page finale de l'assistant. Vous pouvez saisir les détails de l'adresse IPv6 pour les deux autres nœuds uniquement lorsque l'adresse IPv6 est activée sur le nœud de gestion des outils ONTAP .
 
 +
 Assurez-vous qu’un hôte ESXi ne contient qu’une seule machine virtuelle d’outils ONTAP .  Les entrées sont validées à chaque passage à la fenêtre suivante.
