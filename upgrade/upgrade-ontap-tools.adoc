@@ -108,7 +108,7 @@ Un nouveau disque dur sera créé.  Le provisionneur de stockage dynamique utili
 . Sélectionnez le fichier ISO et sélectionnez *OK*.  Cochez la case connectée dans le champ *Lecteur CD/DVD*.image:../media/primaryvm-edit-settings.png["Modifier les paramètres"]
 . Depuis vCenter Server, ouvrez une console sur les outils ONTAP .
 . Connectez-vous en tant qu'utilisateur de maintenance.
-. Entrez *3* pour sélectionner le menu Configuration système.
+. Entrez *2* pour sélectionner le menu Configuration système.
 . Entrez *7* pour sélectionner l’option de mise à niveau.
 . Lors de la mise à niveau, les actions suivantes sont effectuées automatiquement :
 +

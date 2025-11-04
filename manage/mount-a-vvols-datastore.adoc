@@ -13,6 +13,9 @@ summary: 'Vous pouvez monter une banque de données VMware Virtual Volumes (vVol
 [role="lead"]
 Vous pouvez monter une banque de données VMware Virtual Volumes (vVols) sur un ou plusieurs hôtes supplémentaires pour fournir un accès au stockage à des hôtes supplémentaires.  Vous ne pouvez démonter la banque de données vVols que via les API.
 
+
+NOTE: Lorsque vous ajoutez un nouvel hôte ESXi à l'aide de https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/use-quickstart-to-add---host-to-a-cluster.html["Ajouter un hôte ESX à votre flux de travail de cluster vSphere"] Veuillez attendre que la découverte planifiée de l'hôte soit terminée avant qu'elle n'apparaisse dans les outils ONTAP .  Vous pouvez également lancer manuellement la découverte à partir de l'écran de présentation des outils NetApp ONTAP .
+
 .Étapes
 . Depuis la page d’accueil de vSphere Client, sélectionnez *Hôtes et clusters*.
 . Dans le volet de navigation, sélectionnez le centre de données qui contient le magasin de données.
@@ -21,3 +24,6 @@ Vous pouvez monter une banque de données VMware Virtual Volumes (vVols) sur un 
 
 
 Vous pouvez suivre la progression dans le panneau des tâches récentes.
+
+.Sujet connexe
+link:../manage/add-vsphere-host.html["Ajouter de nouveaux hôtes VMware vSphere"]

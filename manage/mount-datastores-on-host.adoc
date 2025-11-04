@@ -13,6 +13,9 @@ summary: 'Le montage d"un magasin de données fournit un accès au stockage à d
 [role="lead"]
 Le montage d'un magasin de données fournit un accès au stockage à des hôtes supplémentaires.  Vous pouvez monter la banque de données sur les hôtes supplémentaires après avoir ajouté les hôtes à votre environnement VMware.
 
+
+NOTE: Lorsque vous ajoutez un nouvel hôte ESXi à l'aide de https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/use-quickstart-to-add---host-to-a-cluster.html["Ajouter un hôte ESX à votre flux de travail de cluster vSphere"] Veuillez attendre que la découverte planifiée de l'hôte soit terminée avant qu'elle n'apparaisse dans les outils ONTAP .  Vous pouvez également lancer manuellement la découverte à partir de l'écran de présentation des outils NetApp ONTAP .
+
 .À propos de cette tâche
 * Certaines actions de clic droit sont désactivées ou indisponibles selon la version du client vSphere et le type de banque de données sélectionné.
 +
@@ -32,3 +35,6 @@ Le montage d'un magasin de données fournit un accès au stockage à des hôtes 
 
 .Quelle est la prochaine étape ?
 Vous pouvez suivre la progression dans le panneau des tâches récentes.
+
+.Sujet connexe
+link:../manage/add-vsphere-host.html["Ajouter de nouveaux hôtes VMware vSphere"]
