@@ -1775,14 +1775,8 @@
   <block id="9f147a250dd9a5cd9d9745eb3f5f7668" category="paragraph">Mettez à jour l'URL du proxy AutoSupport pour garantir le bon fonctionnement de la fonctionnalité AutoSupport dans les scénarios où un serveur proxy est utilisé pour le contrôle d'accès au réseau ou les mesures de sécurité.  Il permet aux données AutoSupport d'être acheminées via le proxy approprié, permettant une transmission sécurisée et une conformité.</block>
   <block id="d49d8a5effc0a522fa72d0ff457066df" category="list-text">Saisissez une *URL proxy* valide et enregistrez les modifications.</block>
   <block id="eb587ff6958c1e65b721306af8fa8e3b" category="paragraph">Si vous désactivez AutoSupport, l'URL proxy est également désactivée.</block>
-  <block id="a6f65a806180d1ff3c8d5e553e634e9d" category="summary">Vous pouvez mettre à jour les informations d’identification de vCenter Server et ONTAP à l’aide de la console de maintenance.</block>
-  <block id="f72e000ebb4c7bedf651a46e595f1371" category="doc">Mettre à jour les informations d'identification de vCenter Server et ONTAP</block>
-  <block id="7ac19aa441feceb73519a5108d4cc366" category="paragraph">Vous pouvez mettre à jour l’instance vCenter Server et les informations d’identification ONTAP à l’aide de la console de maintenance.</block>
   <block id="21a56b485fb6cd9f7c9cc8f514440950" category="paragraph">Vous devez disposer des informations de connexion de l'utilisateur de maintenance.</block>
-  <block id="1f8bb3d639d4544a4979b060d7cccc88" category="paragraph">Si vous avez modifié les informations d’identification de vCenter Server, ONTAP ou Data LIF après le déploiement, vous devez mettre à jour les informations d’identification à l’aide de cette procédure.</block>
   <block id="cea5a13834803a12adaeb249165351df" category="list-text">Entrer<block ref="c81e728d9d4c2f636f067f89cc14862c" prefix=" " category="inline-code"></block> pour sélectionner le menu de configuration du système.</block>
-  <block id="86ce6e9c3af571980099ca308cd245e3" category="list-text">Entrer<block ref="45c48cce2e2d7fbdea1afc51c7c6ad26" prefix=" " category="inline-code"></block> pour modifier les informations d'identification ONTAP .</block>
-  <block id="207c00a73dde0270cc0fbc7ce9c5f2fd" category="list-text">Entrer<block ref="d3d9446802a44259755d38e6d163e820" prefix=" " category="inline-code"></block> pour modifier les informations d'identification de vCenter.</block>
   <block id="d3cd4bffc1abc46e60337f8438f457b9" category="summary">La vue de stockage affiche la liste des vVols créés par la machine virtuelle.</block>
   <block id="f6607063532d19e10b746de0f6108f15" category="doc">Vue de stockage de la machine virtuelle</block>
   <block id="9d850336a156831a9095fd981a1a0c23" category="admonition">Cette vue s'applique à la machine virtuelle sur laquelle est monté au moins un disque associé à la banque de données vVols gérée par les ONTAP tools for VMware vSphere .</block>
@@ -2284,7 +2278,6 @@
   <block id="cd457aeee08a9f6476660a1f15284160" category="paragraph">Après avoir ajouté le disque dur, mettez à jour les ressources de la machine virtuelle pour les configurations respectives et redémarrez la machine virtuelle principale.</block>
   <block id="82c4bde04ac809c6d15f232949e072ce" category="paragraph">Un nouveau disque dur sera créé.  Le provisionneur de stockage dynamique utilise ce disque dur pour générer ou répliquer les volumes.</block>
   <block id="b06f0e274f6c746f0d30521b5c7f392e" category="list-text">Téléchargez les ONTAP tools for VMware vSphere vers la bibliothèque de contenu.</block>
-  <block id="dd5382558ec4a47dfbc203fb25698772" category="list-text">Dans la page principale de la machine virtuelle, sélectionnez *Actions* &gt; *Modifier les paramètres*</block>
   <block id="ef9e53e40d78d57abe78283a3603eb4e" category="list-text">Sélectionnez le fichier ISO de la bibliothèque de contenu dans la fenêtre des paramètres d'édition sous le champ *Lecteur CD/DVD*.</block>
   <block id="54a029420d74c0dff69239155cf510b5" category="inline-image-macro">Modifier les paramètres</block>
   <block id="2c2d3019834934bb25449edddc396321" category="list-text">Sélectionnez le fichier ISO et sélectionnez *OK*.  Cochez la case connectée dans le champ *Lecteur CD/DVD*.<block ref="af57a506b85774ef3a9f849e2b26e258" category="inline-image-macro-rx" type="image"></block></block>
@@ -2433,4 +2426,12 @@
   <block id="83c2a6ded9467f8048f9a53cabd2e783" category="paragraph-title">Sujet connexe</block>
   <block id="403e2c858b37daa43171ef37b71e6640" category="paragraph"><block ref="403e2c858b37daa43171ef37b71e6640" category="inline-link-macro-rx"></block></block>
   <block id="17e484c8a86cb4a7c9192fe5d0393445" category="list-text">Entrez *2* pour sélectionner le menu Configuration système.</block>
+  <block id="f59d6f6c2fbe5659bab55bb335b17871" category="summary">Vous pouvez mettre à jour les informations d'identification du serveur vCenter à l'aide de la console de maintenance.</block>
+  <block id="d546c3915b2e0bc231d2bd0456f2d736" category="doc">Mettez à jour les informations d'identification du serveur vCenter.</block>
+  <block id="6e73e8087488ddc10c72aeec0f27cc93" category="paragraph">Vous pouvez mettre à jour les informations d'identification de l'instance vCenter Server à l'aide de la console de maintenance.</block>
+  <block id="1f2db2b2d242479839579d1cc7f9d26e" category="paragraph">Si vous avez modifié les informations d'identification de vCenter Server après le déploiement, vous devez les mettre à jour en suivant cette procédure.</block>
+  <block id="a38dbe6982c223d82e53b7d0feab69ce" category="list-text">Entrer<block ref="c9f0f895fb98ab9159f51fd0297e236d" prefix=" " category="inline-code"></block> modifier les informations d'identification vCenter.</block>
+  <block id="a928a1b805644ea87a643f7f8d60a477" category="list-text">Sur la page principale de la VM, sélectionnez *Actions* &gt; *Modifier les paramètres*. Pour identifier le nom de la machine virtuelle principale :</block>
+  <block id="75a86edd37c9b2122be450b28fa09149" category="list-text">Activer le shell de diagnostic sur n'importe quel nœud</block>
+  <block id="e016d50ae26af4214e6a864c1c2c8db5" category="list-text">Exécutez la commande suivante :<block ref="1ebe86b64a17c55ae52f4488cffae75f" prefix=" " category="inline-code"></block></block>
 </blocks>

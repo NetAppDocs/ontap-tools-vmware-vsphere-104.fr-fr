@@ -103,7 +103,13 @@ Un nouveau disque dur sera créé.  Le provisionneur de stockage dynamique utili
 
 .Étapes
 . Téléchargez les ONTAP tools for VMware vSphere vers la bibliothèque de contenu.
-. Dans la page principale de la machine virtuelle, sélectionnez *Actions* > *Modifier les paramètres*
+. Sur la page principale de la VM, sélectionnez *Actions* > *Modifier les paramètres*. Pour identifier le nom de la machine virtuelle principale :
++
+.. Activer le shell de diagnostic sur n'importe quel nœud
+.. Exécutez la commande suivante :
+`grep sourceHost /opt/netapp/meta/ansible_vars.yaml`
+
+
 . Sélectionnez le fichier ISO de la bibliothèque de contenu dans la fenêtre des paramètres d'édition sous le champ *Lecteur CD/DVD*.
 . Sélectionnez le fichier ISO et sélectionnez *OK*.  Cochez la case connectée dans le champ *Lecteur CD/DVD*.image:../media/primaryvm-edit-settings.png["Modifier les paramètres"]
 . Depuis vCenter Server, ouvrez une console sur les outils ONTAP .
