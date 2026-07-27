@@ -15,6 +15,7 @@ Vous devez être conscient de certaines considérations lors de la migration de 
 
 
 
+[[migrate-protected-virtual-machines]]
 == Migrer des machines virtuelles protégées
 
 Vous pouvez migrer les machines virtuelles protégées vers :
@@ -28,6 +29,7 @@ Si la machine virtuelle est migrée vers un autre FlexVol volume, le fichier de 
 
 
 
+[[clone-protected-virtual-machines]]
 == Cloner des machines virtuelles protégées
 
 Vous pouvez cloner des machines virtuelles protégées vers les éléments suivants :
@@ -54,6 +56,7 @@ Se référer à https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7
 
 
 
+[[virtual-machine-snapshots]]
 == Instantanés de machines virtuelles
 
 Actuellement, seuls les instantanés de machines virtuelles sans mémoire sont pris en charge.  Si la machine virtuelle dispose d'un snapshot avec mémoire, la machine virtuelle n'est pas prise en compte pour la protection.

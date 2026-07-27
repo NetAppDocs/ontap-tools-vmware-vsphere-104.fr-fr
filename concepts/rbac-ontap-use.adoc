@@ -15,6 +15,7 @@ Il existe plusieurs aspects des ONTAP tools for VMware vSphere 10 avec ONTAP que
 
 
 
+[[overview-of-the-configuration-process]]
 == Aperçu du processus de configuration
 
 Les ONTAP tools for VMware vSphere 10 incluent la prise en charge de la création d’un utilisateur ONTAP avec un rôle personnalisé. Les définitions sont regroupées dans un fichier JSON que vous pouvez télécharger sur le cluster ONTAP . Vous pouvez créer l'utilisateur et personnaliser le rôle en fonction de votre environnement et de vos besoins de sécurité.
@@ -41,18 +42,21 @@ Dans le cadre de la définition du rôle, vous devez prendre plusieurs décision
 
 
 
+[[configure-the-role-using-system-manager]]
 == Configurer le rôle à l'aide du Gestionnaire système
 
 Une fois que vous avez commencé à créer un nouvel utilisateur et un nouveau rôle avec System Manager et que vous avez téléchargé le fichier JSON, vous pouvez personnaliser le rôle en fonction de votre environnement et de vos besoins.
 
 
 
+[[core-user-and-role-configuration]]
 === Configuration des utilisateurs et des rôles principaux
 
 Les définitions RBAC sont regroupées sous forme de plusieurs fonctionnalités de produit, notamment des combinaisons de VSC, VASA Provider et SRA.  Vous devez sélectionner l’environnement ou les environnements dans lesquels vous avez besoin de la prise en charge RBAC.  Par exemple, si vous souhaitez que les rôles prennent en charge la fonctionnalité de plug-in à distance, sélectionnez VSC.  Vous devez également choisir le nom d'utilisateur et le mot de passe associé.
 
 
 
+[[privileges]]
 === Privileges
 
 Les privilèges de rôle sont organisés en quatre ensembles en fonction du niveau d'accès nécessaire au stockage ONTAP .  Les privilèges sur lesquels sont basés les rôles incluent :
@@ -77,6 +81,7 @@ Ce rôle vous permet de détruire le stockage.  Il inclut également tous les pr
 
 
 
+[[generate-the-user-with-a-role]]
 === Générer l'utilisateur avec un rôle
 
 Après avoir sélectionné les options de configuration pour votre environnement, cliquez sur *Ajouter* et ONTAP crée l'utilisateur et le rôle.  Le nom du rôle généré est une concaténation des valeurs suivantes :

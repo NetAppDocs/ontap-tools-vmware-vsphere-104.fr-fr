@@ -15,6 +15,7 @@ La configuration des paramètres de délai d'expiration et de multi-chemin du se
 
 
 
+[[configure-esxi-server-multipath-and-timeout-settings]]
 == Configurer les paramètres de multi-chemin et de délai d'expiration du serveur ESXi
 
 Les ONTAP tools for VMware vSphere vérifient et définissent les paramètres multichemin de l’hôte ESXi et les paramètres de délai d’expiration HBA qui fonctionnent le mieux avec les systèmes de stockage NetApp .
@@ -40,6 +41,7 @@ NOTE: Vous pouvez développer l’hôte ESXi pour voir les valeurs actuelles.
 
 
 
+[[set-esxi-host-values]]
 == Définir les valeurs de l'hôte ESXi
 
 À l’aide des ONTAP tools for VMware vSphere, vous pouvez définir des délais d’expiration et d’autres valeurs sur les hôtes ESXi pour garantir les meilleures performances et un basculement réussi.  Les valeurs définies par les ONTAP tools for VMware vSphere sont basées sur des tests NetApp internes.
@@ -48,6 +50,7 @@ Vous pouvez définir les valeurs suivantes sur un hôte ESXi :
 
 
 
+[[hbacna-adapter-settings]]
 === Paramètres de l'adaptateur HBA/CNA
 
 Définit les paramètres suivants sur les valeurs par défaut :
@@ -60,6 +63,7 @@ Définit les paramètres suivants sur les valeurs par défaut :
 
 
 
+[[mpio-settings]]
 === Paramètres MPIO
 
 Les paramètres MPIO définissent les chemins préférés pour les systèmes de stockage NetApp .  Ils déterminent lesquels des chemins disponibles sont optimisés (par opposition aux chemins non optimisés qui traversent le câble d'interconnexion) et définissent le chemin préféré sur l'un de ces chemins.
@@ -71,6 +75,7 @@ NOTE: Les paramètres MPIO ne s'appliquent pas aux protocoles NVMe, NVMe/FC et N
 
 
 
+[[nfs-settings]]
 === Paramètres NFS
 
 |===

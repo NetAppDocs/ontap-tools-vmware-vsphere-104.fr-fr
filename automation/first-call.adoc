@@ -18,6 +18,7 @@ Vous pouvez émettre un appel d’API à l’aide de curl pour démarrer avec le
 
 
 
+[[before-you-begin]]
 == Avant de commencer
 
 Vous devez vérifier les informations et les paramètres requis dans les exemples de boucles.
@@ -58,6 +59,7 @@ echo $FQDN_IP
 ----
 
 
+[[step-1-acquire-an-access-token]]
 == Étape 1 : Acquérir un jeton d’accès
 
 Vous devez acquérir un jeton d’accès pour utiliser l’API REST.  Un exemple de procédure de demande d’un jeton d’accès est présenté ci-dessous.  Vous devez remplacer les valeurs appropriées à votre environnement.
@@ -74,6 +76,7 @@ Copiez et enregistrez le jeton d’accès fourni dans la réponse.
 
 
 
+[[step-2-issue-the-rest-api-call]]
 == Étape 2 : Émettre l’appel d’API REST
 
 Une fois que vous disposez d’un jeton d’accès, vous pouvez utiliser curl pour émettre un appel d’API REST.  Inclure le jeton d’accès acquis à la première étape.

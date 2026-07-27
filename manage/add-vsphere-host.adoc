@@ -14,7 +14,7 @@ summary: Ajouter de nouveaux hôtes VMware vSphere aux ONTAP tools for VMware vS
 Ajoutez de nouveaux hôtes VMware vSphere aux ONTAP tools for VMware vSphere afin de gérer et de protéger les banques de données sur les hôtes.
 
 .Étapes
-. Ajoutez un hôte à votre cluster VMware vSphere en suivant le flux de travail décrit à la page : https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/use-quickstart-to-add---host-to-a-cluster.html["Comment ajouter un hôte ESX à votre cluster vSphere à l'aide du flux de travail de démarrage rapide"]
+. Ajoutez un hôte à votre cluster VMware vSphere en suivant le flux de travail à la page : https://techdocs.broadcom.com/["Broadcom Documentation technique"^].
 . Après avoir ajouté l'hôte, accédez au menu principal des outils ONTAP et sélectionnez *Découvrir* dans le panneau d'aperçu.  Attendez la fin de la phase de découverte.  Vous pouvez également attendre la fin de la découverte de l'hôte planifiée.
 
 

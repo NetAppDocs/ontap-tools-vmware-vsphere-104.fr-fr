@@ -84,7 +84,7 @@ Exécutez les commandes suivantes pour effectuer une sauvegarde de MongoDB :
 *Prenez l'instantané des ONTAP tools for VMware vSphere dans vCenter (3 machines virtuelles en cas de déploiement HA, 1 machine virtuelle en cas de déploiement non HA)*
 
 * Dans l’interface utilisateur du client vSphere, sélectionnez la machine virtuelle.
-* Accédez à l’onglet Instantanés et sélectionnez le bouton *Prendre un instantané*.  Prenez un instantané inactif de la machine virtuelle.  Se référer à https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/take-snapshots-of-a-virtual-machine.html["Prendre un instantané d'une machine virtuelle"^] pour plus de détails.
+* Accédez à l'onglet Instantanés et sélectionnez le bouton *Créer un instantané*. Créez un instantané en mode veille de la machine virtuelle. Consultez  https://techdocs.broadcom.com/["Broadcom Documentation technique"^] pour plus de détails.
 
 
 Avant d’effectuer la mise à niveau, supprimez les pods terminés du bundle de journaux avec le préfixe « generate-support-bundle-job ».  Si la génération du bundle de support est en cours, attendez qu'elle soit terminée, puis supprimez le pod.

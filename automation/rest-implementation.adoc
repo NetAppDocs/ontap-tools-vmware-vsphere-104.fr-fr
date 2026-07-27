@@ -20,6 +20,7 @@ L'API REST comprend plusieurs catégories de ressources telles que les vCenters 
 
 
 
+[[how-to-access-the-rest-api]]
 == Comment accéder à l'API REST
 
 Vous pouvez accéder aux ONTAP tools for VMware vSphere 10 via l'adresse IP des outils ONTAP ainsi que le port.  L'URL complète comprend plusieurs parties, notamment :
@@ -47,12 +48,14 @@ Cette URL peut être utilisée pour demander une liste des instances de serveur 
 
 
 
+[[http-details]]
 == Détails HTTP
 
 Les ONTAP tools for VMware vSphere 10 utilisent HTTP et les paramètres associés pour agir sur les instances et les collections de ressources.  Les détails de l’implémentation HTTP sont présentés ci-dessous.
 
 
 
+[[http-methods]]
 === Méthodes HTTP
 
 Les méthodes ou verbes HTTP pris en charge par l'API REST sont présentés dans le tableau ci-dessous.
@@ -78,6 +81,7 @@ Les méthodes ou verbes HTTP pris en charge par l'API REST sont présentés dans
 |===
 
 
+[[request-and-response-headers]]
 === En-têtes de demande et de réponse
 
 Le tableau suivant résume les en-têtes HTTP les plus importants utilisés avec l'API REST.
@@ -97,6 +101,7 @@ Le tableau suivant résume les en-têtes HTTP les plus importants utilisés avec
 |===
 
 
+[[http-status-codes]]
 === Codes d'état HTTP
 
 Les codes d’état HTTP utilisés par l’API REST sont décrits ci-dessous.
@@ -137,6 +142,7 @@ Les codes d’état HTTP utilisés par l’API REST sont décrits ci-dessous.
 |===
 
 
+[[authentication]]
 == Authentification
 
 L'authentification d'un client auprès de l'API REST est effectuée à l'aide d'un jeton d'accès.  Les caractéristiques pertinentes du jeton et du processus d’authentification incluent :
@@ -151,6 +157,7 @@ Se référer àlink:../automation/first-call.html["Votre premier appel d'API RES
 
 
 
+[[synchronous-and-asynchronous-requests]]
 == Requêtes synchrones et asynchrones
 
 La plupart des appels d’API REST s’exécutent rapidement et s’exécutent donc de manière synchrone.  Autrement dit, ils renvoient un code d’état (par exemple 200) une fois la demande terminée.  Les requêtes qui prennent plus de temps à exécuter s'exécutent de manière asynchrone à l'aide d'une tâche en arrière-plan.

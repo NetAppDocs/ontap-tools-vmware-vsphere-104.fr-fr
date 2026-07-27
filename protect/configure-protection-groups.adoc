@@ -17,6 +17,7 @@ Lorsque vous ajoutez une nouvelle banque de données, vous pouvez l'inclure dans
 
 
 
+[[pair-protected-and-recovery-sites]]
 == Sites de protection et de récupération des paires
 
 Vous devez associer les sites protégés et de récupération créés à l'aide de votre client vSphere pour permettre à l'adaptateur de réplication de stockage (SRA) de découvrir les systèmes de stockage.
@@ -47,6 +48,7 @@ Les sites protégés et de récupération apparaîtront dans la boîte de dialog
 
 
 
+[[configure-protection-groups]]
 == Configurer les groupes de protection
 
 .Avant de commencer

@@ -21,6 +21,7 @@ Vous pouvez effectuer les tâches suivantes dans le cadre de la protection contr
 
 
 
+[[monitor-host-cluster-protection]]
 == Surveiller la protection du cluster d'hôtes
 
 Utilisez cette procédure pour surveiller l’état de la protection du cluster hôte.  Vous pouvez surveiller chaque cluster d'hôtes protégé ainsi que son état de protection, les relations SnapMirror , les banques de données et l'état SnapMirror correspondant.
@@ -36,6 +37,7 @@ L'icône sous la colonne de protection indique l'état de la protection
 
 
 
+[[add-new-datastores-or-hosts]]
 == Ajouter de nouveaux magasins de données ou hôtes
 
 Utilisez cette procédure pour protéger les banques de données ou les hôtes nouvellement ajoutés.  Vous pouvez ajouter de nouveaux hôtes au cluster protégé ou créer de nouvelles banques de données sur le cluster hôte à l'aide de l'interface utilisateur native de vCenter.
@@ -62,6 +64,7 @@ Une tâche vCenter est créée et vous pouvez suivre la progression dans le pann
 
 
 
+[[add-a-new-snapmirror-relationship]]
 == Ajouter une nouvelle relation SnapMirror
 
 .Étapes
@@ -84,6 +87,7 @@ Une tâche vCenter est créée et vous pouvez suivre la progression dans le pann
 
 
 
+[[delete-an-existing-snapmirror-relationship]]
 == Supprimer une relation SnapMirror existante
 
 Pour supprimer une relation SnapMirror asynchrone, le site secondaire SVM ou le cluster doit être ajouté comme backend de stockage sur les ONTAP tools for VMware vSphere.  Vous ne pouvez pas supprimer toutes les relations SnapMirror .  Lorsque vous supprimez une relation, la relation correspondante sur le cluster ONTAP est également supprimée.  Lorsque vous supprimez une relation AutomatedFailOverDuplex SnapMirror , les banques de données sur la destination ne sont pas mappées et le groupe de cohérence, les LUN, les volumes et les igroups sont supprimés du cluster ONTAP de destination.
@@ -105,6 +109,7 @@ Une tâche vCenter est créée et vous pouvez suivre la progression dans le pann
 
 
 
+[[modify-an-existing-snapmirror-relationship]]
 == Modifier une relation SnapMirror existante
 
 Pour modifier une relation SnapMirror asynchrone, le site secondaire SVM ou le cluster doit être ajouté comme backend de stockage sur les ONTAP tools for VMware vSphere.  S'il s'agit d'une relation SnapMirror AutomatedFailOverDuplex, vous pouvez modifier la proximité de l'hôte en cas de configuration uniforme et l'accès de l'hôte en cas de configuration non uniforme.  Vous ne pouvez pas échanger les types de stratégie Asynchronous et AutomatedFailOverDuplex.  Vous pouvez définir la proximité ou l’accès des hôtes nouvellement découverts sur le cluster.

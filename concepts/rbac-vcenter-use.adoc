@@ -18,12 +18,14 @@ Il existe plusieurs aspects des ONTAP tools for VMware vSphere 10 RBAC avec vCen
 
 
 
+[[vcenter-roles-and-the-administrator-account]]
 == Rôles vCenter et compte administrateur
 
 Vous devez uniquement définir et utiliser les rôles vCenter Server personnalisés si vous souhaitez limiter l'accès aux objets vSphere et aux tâches administratives associées.  Si la limitation de l’accès n’est pas nécessaire, vous pouvez utiliser un compte administrateur à la place.  Chaque compte administrateur est défini avec le rôle Administrateur au niveau supérieur de la hiérarchie des objets.  Cela fournit un accès complet aux objets vSphere, y compris ceux ajoutés par les ONTAP tools for VMware vSphere 10.
 
 
 
+[[vsphere-object-hierarchy]]
 == Hiérarchie des objets vSphere
 
 L'inventaire des objets vSphere est organisé dans une hiérarchie.  Par exemple, vous pouvez parcourir la hiérarchie comme suit :
@@ -34,6 +36,7 @@ Toutes les autorisations sont validées dans la hiérarchie des objets vSphere, 
 
 
 
+[[roles-included-with-ontap-tools-for-vmware-vsphere-10]]
 == Rôles inclus avec les ONTAP tools for VMware vSphere 10
 
 Pour simplifier l'utilisation de vCenter Server RBAC, les ONTAP tools for VMware vSphere fournissent des rôles prédéfinis adaptés à diverses tâches d'administration.
@@ -58,18 +61,21 @@ Fournit certains des privilèges natifs de vCenter Server et des privilèges sp�
 
 
 
+[[vsphere-objects-and-ontap-storage-backends]]
 == Objets vSphere et backends de stockage ONTAP
 
 Les deux environnements RBAC fonctionnent ensemble.  Lors de l'exécution d'une tâche dans l'interface client vSphere, les rôles des outils ONTAP définis sur vCenter Server sont vérifiés en premier.  Si l’opération est autorisée par vSphere, les privilèges du rôle ONTAP sont examinés.  Cette deuxième étape est effectuée en fonction du rôle ONTAP attribué à l’utilisateur lors de la création et de la configuration du backend de stockage.
 
 
 
+[[working-with-vcenter-server-rbac]]
 == Travailler avec vCenter Server RBAC
 
 Il y a quelques éléments à prendre en compte lorsque vous travaillez avec les privilèges et autorisations de vCenter Server.
 
 
 
+[[required-privileges]]
 === Privilèges requis
 
 Pour accéder à l'interface utilisateur des ONTAP tools for VMware vSphere 10, vous devez disposer du privilège _View_ spécifique aux outils ONTAP .  Si vous vous connectez à vSphere sans ce privilège et cliquez sur l'icône NetApp , les ONTAP tools for VMware vSphere affichent un message d'erreur et vous empêchent d'accéder à l'interface utilisateur.
@@ -80,6 +86,7 @@ Vous pouvez également attribuer le privilège Affichage à un autre niveau d’
 
 
 
+[[assigning-permissions]]
 === Attribution des autorisations
 
 Vous devez utiliser les autorisations vCenter Server si vous souhaitez limiter l’accès aux objets et tâches vSphere.  L'endroit où vous attribuez l'autorisation dans la hiérarchie des objets vSphere détermine les ONTAP tools for VMware vSphere 10 que les utilisateurs peuvent effectuer.

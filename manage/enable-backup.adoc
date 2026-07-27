@@ -18,6 +18,7 @@ NOTE: Pour migrer vers HA lorsque la sauvegarde non HA est activée, désactivez
 
 
 
+[[create-backup-and-download-the-backup-file]]
 == Créer une sauvegarde et télécharger le fichier de sauvegarde
 
 .Étapes
@@ -41,6 +42,7 @@ Dans la section fichier, vous pouvez voir le répertoire.  Le nom du répertoire
 
 
 
+[[recover]]
 == Récupérer
 
 Pour récupérer la configuration, mettez hors tension la machine virtuelle existante et déployez une nouvelle machine virtuelle à l’aide de l’OVA qui a été utilisé dans le déploiement initial.
